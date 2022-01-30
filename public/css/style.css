@@ -17,6 +17,10 @@
     font-weight: normal;
 }
 
+a {
+    text-decoration: none;
+}
+
 header {
     width: 100%;
 }
@@ -86,9 +90,17 @@ header {
     justify-content: space-between;
 }
 
+.justify-content-start {
+    justify-content: start;
+}
+
 .f-between {
     display: flex;
     justify-content: space-between;
+}
+
+.align-self-end {
+    align-self: end;
 }
 
 .fs-18 {
@@ -103,8 +115,16 @@ header {
     font-size: 21px;
 }
 
+.fs-22 {
+    font-size: 21px;
+}
+
 .fs-19 {
     font-size: 19px;
+}
+
+.fs-30 {
+    font-size: 30px;
 }
 
 .mt-16 {
@@ -115,8 +135,53 @@ header {
     margin-top: 25px;
 }
 
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-60 {
+    margin-top: 60px;
+}
+
+.mt-70 {
+    margin-top: 70px;
+}
+
+.mt-75 {
+    margin-top: 75px;
+}
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.mb-25 {
+    margin-bottom: 25px;
+}
+
+.mb-60 {
+    margin-bottom: 60px;
+}
+
 .pl-80 {
     padding-left: 80px;
+}
+
+.pr-90 {
+    padding-right: 90px;
+}
+
+.lh-30 {
+    line-height: 30px;
+}
+
+.color-dark-green {
+    color: rgba(15, 110, 92, 1);
+
+}
+
+.v-align-bottom {
+    vertical-align: bottom;
 }
 
 #header {
@@ -381,4 +446,35 @@ footer {
 .vendor-code {
     line-height: 22px;
     vertical-align: bottom;
+}
+
+.stock {
+    color: rgba(15, 110, 92, 1);
+}
+
+.btn-cart-big {
+    width: 352px;
+    color: white;
+    background: rgba(15, 110, 92, 1);
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    padding-top: 21px;
+    padding-bottom: 21px;
+    margin-top: 25px;
+}
+
+.spec {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    height: 48px;
+}
+
+.spec-key {
+    width: 325px;
+}
+
+.review {
+    margin-top: 35px;
 }
