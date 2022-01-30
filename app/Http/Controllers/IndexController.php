@@ -21,4 +21,9 @@ class IndexController extends BaseController
     {
         return view('book');
     }
+
+    public function cart()
+    {
+        return view('cart');
+    }
 }

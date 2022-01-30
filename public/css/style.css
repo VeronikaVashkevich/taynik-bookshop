@@ -111,6 +111,10 @@ header {
     font-size: 16px;
 }
 
+.fs-20 {
+    font-size: 20px;
+}
+
 .fs-21 {
     font-size: 21px;
 }
@@ -163,8 +167,20 @@ header {
     margin-bottom: 60px;
 }
 
+.ml-30 {
+    margin-left: 30px;
+}
+
 .pl-80 {
     padding-left: 80px;
+}
+
+.pl-30 {
+    padding-left: 30px;
+}
+
+.pl-25 {
+    padding-left: 25px;
 }
 
 .pr-90 {
@@ -177,7 +193,10 @@ header {
 
 .color-dark-green {
     color: rgba(15, 110, 92, 1);
+}
 
+.w-148 {
+    width: 148px;
 }
 
 .v-align-bottom {
@@ -477,4 +496,52 @@ footer {
 
 .review {
     margin-top: 35px;
+}
+
+.cart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-books {
+    width: 55%;
+}
+
+.cart-order {
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 40px;
+    width: 425px;
+    height: 330px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+    box-shadow: 0px 109px 116px rgba(0, 0, 0, 0.07), 0px 41.9852px 36.9481px rgba(0, 0, 0, 0.0425185), 0px 8.88148px 9.45185px rgba(0, 0, 0, 0.0274815);
+}
+
+.cart-book {
+    display: flex;
+    margin-bottom: 49px;
+}
+
+#book-amount {
+    font-family: Montserrat, serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    width: 69px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid rgba(114, 114, 114, 0.6);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.btn-order {
+    background: #0F6E5C;
+    height: 75px;
+    width: 425px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 22px;
 }
