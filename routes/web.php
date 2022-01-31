@@ -7,3 +7,7 @@ Route::get('/', [IndexController::class, 'index']);
 Route::get('/book-list', [IndexController::class, 'bookList']);
 Route::get('/book', [IndexController::class, 'book']);
 Route::get('/cart', [IndexController::class, 'cart']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
