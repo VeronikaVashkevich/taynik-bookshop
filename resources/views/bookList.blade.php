@@ -1,10 +1,7 @@
 @extends('layouts/app')
-    <!doctype html>
-<html lang="en">
 
 @section('title', 'Каталог книг')
 
-<body>
 @section('header')
     @parent
 @endsection
@@ -159,5 +156,3 @@
 @section('footer')
     @parent
 @endsection
-</body>
-</html>
