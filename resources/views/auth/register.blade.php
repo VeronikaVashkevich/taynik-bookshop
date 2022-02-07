@@ -68,7 +68,7 @@
 
                         <div class="mt-30">
                             <div class="fs-22 fw-500">Есть аккаунт?
-                                <span class="color-dark-green">Войти</span>
+                                <a class="color-dark-green" href="{{ url('/login') }}">Войти</a>
                             </div>
                         </div>
                     </form>

@@ -69,7 +69,7 @@
 
                         <div class="mt-30">
                             <div class="fs-22 fw-500">Нет аккаунта?
-                                <span class="color-dark-green">Регистрация</span>
+                                <a class="color-dark-green" href="{{ url('/register') }}">Регистрация</a>
                             </div>
                         </div>
                     </form>
