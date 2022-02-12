@@ -13,7 +13,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                                    name="email" value="{{ old('email') }}" required autofocus placeholder="Email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -50,13 +50,15 @@
                             </div>
                         </div>
 
-                        {{-- <div class="row mb-0">
+                        <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-auth">
                                     Войти
                                 </button>
+                            </div>
+                        </div>
 
-                                <div class="mt-30">
+                                {{--<div class="mt-30">
                                     @if (Route::has('password.request'))
                                         <a class="fs-22 fw-500 color-dark-green"
                                             href="{{ route('password.request') }}">

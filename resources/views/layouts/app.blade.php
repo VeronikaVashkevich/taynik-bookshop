@@ -38,14 +38,25 @@
                 <li class="header-el search-form">
                     <input type="text" name="search" id="search" class="form-input search" placeholder="Книга, автор">
                 </li>
-                <li class="header-el profile flex-center">
-                    <a href="{{ url('/login') }}">
-                        <img src="{{asset('img/icons/user-icon.png')}}" alt="user icon" class="img-icon">
-                    </a>
-                    <div class="icon-text">
-                        <a class="color-dark-green" href="{{ url('/login') }}">Войти</a>
-                    </div>
-                </li>
+                @auth
+                    <li class="header-el profile flex-center">
+                        <a href="{{ url('/logout') }}">
+                            <img src="{{asset('img/icons/user-icon.png')}}" alt="user icon" class="img-icon">
+                        </a>
+                        <div class="icon-text">
+                            <a class="color-dark-green" href="{{ url('/logout') }}">Выйти</a>
+                        </div>
+                    </li>
+                @else
+                    <li class="header-el profile flex-center">
+                        <a href="{{ url('/login') }}">
+                            <img src="{{asset('img/icons/user-icon.png')}}" alt="user icon" class="img-icon">
+                        </a>
+                        <div class="icon-text">
+                            <a class="color-dark-green" href="{{ url('/login') }}">Войти</a>
+                        </div>
+                    </li>
+                @endauth
                 <li class="header-el cart-icon flex-center">
                     <a href="{{ url('/cart') }}">
                         <img src="{{asset('img/icons/cart-ico.png')}}" alt="cart icon" class="img-icon">
