@@ -12,16 +12,6 @@ class IndexController extends BaseController
         return view('index');
     }
 
-    public function bookList()
-    {
-        return view('bookList');
-    }
-
-    public function book()
-    {
-        return view('book');
-    }
-
     public function cart()
     {
         return view('cart');
