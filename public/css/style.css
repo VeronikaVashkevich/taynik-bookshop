@@ -131,8 +131,20 @@ header {
     font-size: 30px;
 }
 
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-14 {
+    margin-top: 14px;
+}
+
 .mt-16 {
     margin-top: 16px;
+}
+
+.mt-20 {
+    margin-top: 20px;
 }
 
 .mt-25 {
@@ -141,6 +153,10 @@ header {
 
 .mt-30 {
     margin-top: 30px;
+}
+
+.mt-40 {
+    margin-top: 40px;
 }
 
 .mt-60 {
@@ -197,6 +213,10 @@ header {
 
 .color-dark-green {
     color: rgba(15, 110, 92, 1);
+}
+
+.color-red {
+    color: rgba(222, 40, 40, 1);
 }
 
 .w-148 {
