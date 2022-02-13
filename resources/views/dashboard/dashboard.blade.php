@@ -15,6 +15,14 @@
     <div class="content">
         <section id="adminPanel" class="container">
             <div class="d-flex justify-content-sb w-100p">
+                <div class="fs-35 fw-600">Категории</div>
+                <div>
+                    <a href="{{ url('dashboard/categories') }}" class="btn btn-cart-big"
+                       style="padding-left: 20px; padding-right: 20px;">Перейти к упарвлению</a>
+                </div>
+            </div>
+            <div class="mt-30"></div>
+            <div class="d-flex justify-content-sb w-100p">
                 <div class="fs-35 fw-600">Список книг</div>
                 <div>
                     <a href="{{ url('dashboard/create-book') }}" class="btn btn-cart-big"

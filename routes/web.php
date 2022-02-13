@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +22,12 @@ Route::resource('books', DashboardController::class);
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
     Route::get('/dashboard/create-book', [DashboardController::class, 'createBook']);
     Route::post('/dashboard/store-new-book', [DashboardController::class, 'storeNewBook'])->name('store-new-book');
-
     Route::get('/dashboard/edit-book/', [DashboardController::class, 'edit'])->name('edit-book-form');
+
+    Route::get('/dashboard/new-category', [CategoryController::class, 'create'])->name('create-category');
+    Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('category-dashboard');
+    Route::resource('categories', CategoryController::class);
 });
