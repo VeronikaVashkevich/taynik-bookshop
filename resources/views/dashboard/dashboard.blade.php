@@ -17,7 +17,8 @@
             <div class="d-flex justify-content-sb w-100p">
                 <div class="fs-35 fw-600">Список книг</div>
                 <div>
-                    <a href="{{ url('dashboard/create-book') }}" class="btn btn-cart-big" style="padding-left: 20px; padding-right: 20px;">Добавить</a>
+                    <a href="{{ url('dashboard/create-book') }}" class="btn btn-cart-big"
+                       style="padding-left: 20px; padding-right: 20px;">Добавить</a>
                 </div>
             </div>
             <div class="mt-30"></div>
@@ -45,6 +46,8 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+            <div class="pagination-links">
                 {{ $books->links() }}
             </div>
         </section>

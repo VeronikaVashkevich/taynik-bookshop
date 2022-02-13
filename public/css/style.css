@@ -219,6 +219,10 @@ header {
     color: rgba(222, 40, 40, 1);
 }
 
+.color-grey {
+    color: #595a5e;
+}
+
 .w-148 {
     width: 148px;
 }
@@ -634,4 +638,14 @@ footer {
     line-height: 30px;
     font-weight: 600;
     height: 75px;
+}
+
+.pagination-links {
+    width: 40%;
+    margin: 30px auto;
+
+text-align: center}
+
+.flex-column {
+    flex-direction: column;
 }

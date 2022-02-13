@@ -100,7 +100,9 @@
                     </div>
                 @endforeach
             </div>
-            {{ $books->links() }}
+            <div class="pagination-links">
+                {{ $books->links() }}
+            </div>
         </section>
     </div>
 @endsection
