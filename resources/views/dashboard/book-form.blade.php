@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Добавить книгу')
+
 @section('content')
     <div class="content">
         <div class="d-flex jc-center mb-60 mt-30">
