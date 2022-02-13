@@ -64,6 +64,12 @@ class DashboardController extends Controller
         return redirect('/dashboard')->with('status', 'Книга успешно обновлена');
     }
 
+    public function destroy(Book $book)
+    {
+        $book->delete();
+        return redirect('/dashboard')->with('status', 'Книга успешно удалена');
+    }
+
     public function storeNewBook(Request $request)
     {
         $book = new Book;

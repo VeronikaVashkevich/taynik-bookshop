@@ -39,9 +39,15 @@
                                 {{ $book->price }}р
                             </div>
                             <div class="add-to-cart">
-                                <a href="{{ route('books.edit', $book->id) }}" class="btn btn-cart"> Редактировать</a>
+                                <a href="{{ route('books.edit', $book->id) }}">
+                                    <input type="button" value="Редактировать" class="btn btn-cart">
+                                </a>
                                 <div class="mt-10"></div>
-                                <input type="button" value="Удалить" class="btn btn-danger">
+                                <form action="{{ route('books.destroy', $book->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Удалить" class="btn btn-danger">
+                                </form>
                             </div>
                         </div>
                     @endforeach
