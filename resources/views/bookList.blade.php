@@ -80,75 +80,27 @@
 
         <section id="catalog" class="container">
             <div class="books">
-                <div class="book-small">
-                    <div class="book-cover">
-                        <img src="{{asset('img/covers/любовь-ненависть.png')}}" alt="">
+                @foreach($books as $book)
+                    <div class="book-small mt-30">
+                        <div class="book-cover">
+                            <img src="{{asset('img/covers/любовь-ненависть.png')}}" alt="">
+                        </div>
+                        <div class="book-title fs-21 fw-600">
+                            {{ $book->name }}
+                        </div>
+                        <div class="book-author fs-19 fw-500">
+                            {{ $book->author }}
+                        </div>
+                        <div class="book-price fs-22 fw-600">
+                            {{ $book->price }}р
+                        </div>
+                        <div class="add-to-cart">
+                            <input type="button" value="В корзину" class="btn btn-cart">
+                        </div>
                     </div>
-                    <div class="book-title fs-21 fw-600">
-                        #ЛюбовьНенависть
-                    </div>
-                    <div class="book-author fs-19 fw-500">
-                        Анна Джейн
-                    </div>
-                    <div class="book-price fs-22 fw-600">
-                        22.36р
-                    </div>
-                    <div class="add-to-cart">
-                        <input type="button" value="В корзину" class="btn btn-cart">
-                    </div>
-                </div>
-                <div class="book-small">
-                    <div class="book-cover">
-                        <img src="{{asset('img/covers/ненависть-любось.png')}}" alt="">
-                    </div>
-                    <div class="book-title fs-21 fw-600">
-                        #НенавистьЛюбовь
-                    </div>
-                    <div class="book-author fs-19 fw-500">
-                        Анна Джейн
-                    </div>
-                    <div class="book-price fs-22 fw-600">
-                        26.41р
-                    </div>
-                    <div class="add-to-cart">
-                        <input type="button" value="В корзину" class="btn btn-cart">
-                    </div>
-                </div>
-                <div class="book-small">
-                    <div class="book-cover">
-                        <img src="{{asset('img/covers/крылья.png')}}" alt="">
-                    </div>
-                    <div class="book-title fs-21 fw-600">
-                        Крылья
-                    </div>
-                    <div class="book-author fs-19 fw-500">
-                        Кристина Старк
-                    </div>
-                    <div class="book-price fs-22 fw-600">
-                        17.35р
-                    </div>
-                    <div class="add-to-cart">
-                        <input type="button" value="В корзину" class="btn btn-cart">
-                    </div>
-                </div>
-                <div class="book-small">
-                    <div class="book-cover">
-                        <img src="{{asset('img/covers/зулейха%20открыывает%20глаза.png')}}" alt="">
-                    </div>
-                    <div class="book-title fs-21 fw-600">
-                        Зулейха открывает глаза
-                    </div>
-                    <div class="book-author fs-19 fw-500">
-                        Гузель Яхина
-                    </div>
-                    <div class="book-price fs-22 fw-600">
-                        14.50р
-                    </div>
-                    <div class="add-to-cart">
-                        <input type="button" value="В корзину" class="btn btn-cart">
-                    </div>
-                </div>
+                @endforeach
             </div>
+            {{ $books->links() }}
         </section>
     </div>
 @endsection

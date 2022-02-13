@@ -349,11 +349,13 @@ input:focus {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .book {
     width: 315px;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
 }
 
