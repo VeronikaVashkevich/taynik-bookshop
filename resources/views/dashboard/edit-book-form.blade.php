@@ -1,20 +1,21 @@
 @extends('layouts.app')
 
-@section('title', 'Добавить книгу')
+@section('title', 'Редактировать книгу')
 
 @section('content')
     <div class="content">
         <div class="d-flex jc-center mb-60 mt-30">
             <div class="card">
-                <div class="card-header fs-35 fw-600 mb-40">Добавить книгу</div>
+                <div class="card-header fs-35 fw-600 mb-40">Редактировать книгу {{ $book->name }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/dashboard/store-new-book') }}" class="form" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('books.update', $book->id) }}" class="form" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <input id="vendor_code" type="number"
                                        class="form-control @error('vendor_code') is-invalid @enderror"
-                                       name="vendor_code" required
+                                       name="vendor_code" required value="{{ $book->vendor_code }}"
                                        placeholder="Артикул">
 
                                 @error('vendor_code')
@@ -26,7 +27,7 @@
                             <div class="col-md-6">
                                 <input id="name" type="text"
                                        class="form-control @error('name') is-invalid @enderror"
-                                       name="name" required
+                                       name="name" required value="{{ $book->name }}"
                                        placeholder="Название">
 
                                 @error('name')
@@ -50,7 +51,7 @@
                             <div class="col-md-6">
                                 <input id="author" type="text"
                                        class="form-control @error('author') is-invalid @enderror"
-                                       name="author" required
+                                       name="author" required value="{{ $book->author }}"
                                        placeholder="Автор">
 
                                 @error('author')
@@ -62,7 +63,7 @@
                             <div class="col-md-6">
                                 <input id="pages" type="number"
                                        class="form-control @error('pages') is-invalid @enderror"
-                                       name="pages" required
+                                       name="pages" required value="{{ $book->pages }}"
                                        placeholder="Количество страниц">
 
                                 @error('pages')
@@ -74,7 +75,7 @@
                             <div class="col-md-6">
                                 <input id="price" type="number"
                                        class="form-control @error('price') is-invalid @enderror"
-                                       name="price" required
+                                       name="price" required value="{{ $book->price }}"
                                        placeholder="Цена">
 
                                 @error('price')
@@ -86,7 +87,7 @@
                             <div class="col-md-6">
                                 <input id="price_sale" type="number"
                                        class="form-control @error('price_sale') is-invalid @enderror"
-                                       name="price_sale" required
+                                       name="price_sale" required value="{{ $book->price_sale }}"
                                        placeholder="Акционная цена">
 
                                 @error('price_sale')
@@ -98,7 +99,7 @@
                             <div class="col-md-6">
                                 <input id="year" type="date"
                                        class="form-control @error('year') is-invalid @enderror"
-                                       name="year" required
+                                       name="year" required value="{{ $book->year }}"
                                        placeholder="Год выпуска">
 
                                 @error('year')
@@ -110,7 +111,7 @@
                             <div class="col-md-6">
                                 <input id="genre" type="text"
                                        class="form-control @error('genre') is-invalid @enderror"
-                                       name="genre" required
+                                       name="genre" required value="{{ $book->genre }}"
                                        placeholder="Жанр">
 
                                 @error('genre')
@@ -121,7 +122,7 @@
                             </div>
                             <div class="col-md-6">
                                 <textarea name="description" class="form-control" id="description" cols="100"
-                                          rows="15" placeholder="Описание"></textarea>
+                                          rows="15" placeholder="Описание">{{ $book->description }}"</textarea>
 
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -132,7 +133,7 @@
                             <div class="col-md-6">
                                 <input id="age" type="number" max="21" min="0"
                                        class="form-control @error('age') is-invalid @enderror"
-                                       name="age" required
+                                       name="age" required value="{{ $book->age }}"
                                        placeholder="Рейтинг">
 
                                 @error('age')
@@ -144,7 +145,7 @@
                             <div class="col-md-6">
                                 <input id="length" type="number"
                                        class="form-control @error('length') is-invalid @enderror"
-                                       name="length" required
+                                       name="length" required value="{{ $book->length }}"
                                        placeholder="Длина книги, мм">
 
                                 @error('length')
@@ -156,7 +157,7 @@
                             <div class="col-md-6">
                                 <input id="width" type="number"
                                        class="form-control @error('width') is-invalid @enderror"
-                                       name="width" required
+                                       name="width" required value="{{ $book->width }}"
                                        placeholder="Ширина книги, мм">
 
                                 @error('width')
@@ -167,8 +168,8 @@
                             </div>
                             <div class="col-md-6">
                                 <select name="cover" id="cover" class="form-control">
-                                    <option value="hard">Твердый переплет</option>
-                                    <option value="soft">Мягкий переплет</option>
+                                    <option value="hard" @if($book->cover == "hard") selected @endif>Твердый переплет</option>
+                                    <option value="soft" @if($book->cover == "soft") selected @endif>Мягкий переплет</option>
                                 </select>
                                 @error('cover')
                                 <span class="invalid-feedback" role="alert">
@@ -178,8 +179,8 @@
                             </div>
                             <div class="col-md-6">
                                 <select name="country" id="country" class="form-control">
-                                    <option value="foreign">Зарубежная литература</option>
-                                    <option value="russian">Русская литература</option>
+                                    <option value="foreign" @if($book->country == "foreign") selected @endif>Зарубежная литература</option>
+                                    <option value="russian" @if($book->country == "russian") selected @endif>Русская литература</option>
                                 </select>
                                 @error('country')
                                 <span class="invalid-feedback" role="alert">
@@ -191,7 +192,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-auth">
-                                        Добавить
+                                        Сохранить
                                     </button>
                                 </div>
                             </div>

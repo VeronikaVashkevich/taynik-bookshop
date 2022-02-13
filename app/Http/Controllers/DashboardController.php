@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Book;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,13 +26,21 @@ class DashboardController extends Controller
         return view('dashboard/book-form');
     }
 
-    public function storeNewBook(Request $request)
+    /**
+     * @param Book $book
+     * @return Application|Factory|View
+     */
+    public function edit(Book $book)
     {
-        $book = new Book;
+        return view('dashboard/edit-book-form', [
+            'book' => $book,
+        ]);
+    }
 
+    public function update(Request $request, Book $book)
+    {
         $book->name = $request->name;
         $book->vendor_code = $request->vendor_code;
-        $book->image = $request->image;
         $book->author = $request->author;
         $book->pages = $request->pages;
         $book->price = $request->price;
@@ -41,6 +53,40 @@ class DashboardController extends Controller
         $book->width = $request->width;
         $book->cover = $request->cover;
         $book->country = $request->country;
+
+        $uploadFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [
+            'folder' => 'covers',
+        ])->getSecurePath();
+        $book->image = $uploadFileUrl;
+
+        $book->save();
+
+        return redirect('/dashboard')->with('status', 'Книга успешно обновлена');
+    }
+
+    public function storeNewBook(Request $request)
+    {
+        $book = new Book;
+
+        $book->name = $request->name;
+        $book->vendor_code = $request->vendor_code;
+        $book->author = $request->author;
+        $book->pages = $request->pages;
+        $book->price = $request->price;
+        $book->price_sale = $request->price_sale;
+        $book->year = $request->year;
+        $book->genre = $request->genre;
+        $book->description = $request->description;
+        $book->age = $request->age;
+        $book->length = $request->length;
+        $book->width = $request->width;
+        $book->cover = $request->cover;
+        $book->country = $request->country;
+
+        $uploadFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [
+            'folder' => 'covers',
+        ])->getSecurePath();
+        $book->image = $uploadFileUrl;
 
         $book->save();
 

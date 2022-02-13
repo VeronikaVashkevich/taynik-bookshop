@@ -17,8 +17,12 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::resource('books', DashboardController::class);
+
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/create-book', [DashboardController::class, 'createBook']);
     Route::post('/dashboard/store-new-book', [DashboardController::class, 'storeNewBook'])->name('store-new-book');
+
+    Route::get('/dashboard/edit-book/', [DashboardController::class, 'edit'])->name('edit-book-form');
 });

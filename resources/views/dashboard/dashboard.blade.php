@@ -27,7 +27,7 @@
                     @foreach ($books as $book)
                         <div class="book mt-30">
                             <div class="book-cover">
-                                <img src="{{asset('img/covers/и%20эхо%20летит%20по%20горам.png')}}" alt="">
+                                <img src="{{ $book->image }}" alt="">
                             </div>
                             <div class="book-title fs-24 fw-600">
                                 {{ $book->name }}
@@ -39,7 +39,7 @@
                                 {{ $book->price }}р
                             </div>
                             <div class="add-to-cart">
-                                <input type="button" value="Редактировать" class="btn btn-cart">
+                                <a href="{{ route('books.edit', $book->id) }}" class="btn btn-cart"> Редактировать</a>
                                 <div class="mt-10"></div>
                                 <input type="button" value="Удалить" class="btn btn-danger">
                             </div>
