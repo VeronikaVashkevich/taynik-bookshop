@@ -29,4 +29,6 @@ class Book extends Model
         'cover',
         'country',
     ];
+
+    public $timestamps = false;
 }

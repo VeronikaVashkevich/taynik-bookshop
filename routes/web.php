@@ -19,4 +19,6 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard/create-book', [DashboardController::class, 'createBook']);
+    Route::post('/dashboard/store-new-book', [DashboardController::class, 'storeNewBook'])->name('store-new-book');
 });

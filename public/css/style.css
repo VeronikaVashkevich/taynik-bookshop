@@ -584,6 +584,12 @@ footer {
 
 .card {
     width: 40%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.jc-center {
+    justify-content: center;
 }
 
 .justify-content-center {
