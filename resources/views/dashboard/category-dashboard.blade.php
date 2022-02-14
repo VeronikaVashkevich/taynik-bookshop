@@ -23,11 +23,21 @@
             </div>
             <div class="mt-30"></div>
             <div class="section-content">
-                <ul>
+                <table>
                     @foreach($categories as $category)
-                        <li class="fs-26 fw-500 mb-25 ml-30">{{ $category->name}}</li>
+                        <tr class="dashboard-table-row">
+                            <td class="fs-26 fw-500 mb-40 ml-30 pl-25">{{ $category->name}}</td>
+                            <td class="fs-26 fw-500 mb-40 pl-25"><a href="{{ route('categories.edit', $category->id) }}" class="color-dark-green">Редактировать</a></td>
+                            <td class="fs-26 fw-500 mb-40 pl-25">
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Удалить" class="btn btn-link-danger" style="padding-left: 30px; padding-right: 30px">
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
-                </ul>
+                </table>
             </div>
         </section>
     </div>

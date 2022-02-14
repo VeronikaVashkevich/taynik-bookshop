@@ -67,11 +67,13 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Category  $category
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function edit(Category $category)
     {
-        //
+        return view('dashboard/edit-category-form', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -79,21 +81,25 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Category  $category
-     * @return Response
+     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect('/dashboard/categories');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Category  $category
-     * @return Response
+     * @return Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect('/dashboard/categories');
     }
 }

@@ -207,6 +207,10 @@ header {
     padding-left: 25px;
 }
 
+.pb-30 {
+    padding-bottom: 30px;
+}
+
 .pr-90 {
     padding-right: 90px;
 }
@@ -652,4 +656,18 @@ text-align: center}
 
 .flex-column {
     flex-direction: column;
+}
+
+.dashboard-table-row {
+    height: 50px;
+}
+
+.btn-link-danger {
+    background: none;
+    border: 0;
+    color: #b61717;
+    font-size: 26px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-weight: 500;
 }
