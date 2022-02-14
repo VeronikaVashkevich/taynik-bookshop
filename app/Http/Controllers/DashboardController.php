@@ -23,7 +23,9 @@ class DashboardController extends Controller
 
     public function createBook()
     {
-        return view('dashboard/book-form');
+        return view('dashboard/book-form', [
+            'categories' => DB::table('categories')->get()
+        ]);
     }
 
     /**
@@ -34,6 +36,7 @@ class DashboardController extends Controller
     {
         return view('dashboard/edit-book-form', [
             'book' => $book,
+            'categories' => DB::table('categories')->get(),
         ]);
     }
 

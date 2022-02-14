@@ -108,10 +108,11 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <input id="genre" type="text"
-                                       class="form-control @error('genre') is-invalid @enderror"
-                                       name="genre" required
-                                       placeholder="Жанр">
+                                <select name="genre" id="genre" class="form-control">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('genre')
                                 <span class="invalid-feedback" role="alert">
