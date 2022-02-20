@@ -11,8 +11,14 @@ class IndexController extends BaseController
 {
     public function index()
     {
+        $newestBooks = DB::table('books')->where('year', '<', date('Y-m-d'))->orderByDesc('year')->limit(3)->get();
+        $recommendedBooks = DB::table('books')->limit(3)->get();
+        $incomingBooks = DB::table('books')->where('year', '>', date('Y-m-d'))->limit(3)->get();
+
         return view('index', [
-            'books' => DB::table('books')->paginate(9)
+            'newestBooks' => $newestBooks,
+            'recommendedBooks' => $recommendedBooks,
+            'incomingBooks' => $incomingBooks,
         ]);
     }
 
