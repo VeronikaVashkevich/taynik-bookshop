@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends BaseController
 {
-    public function index() {
+    public function index()
+    {
         return view('index', [
             'books' => DB::table('books')->paginate(9)
         ]);
@@ -18,5 +19,10 @@ class IndexController extends BaseController
     public function cart()
     {
         return view('cart');
+    }
+
+    public function menu()
+    {
+        return view('menu');
     }
 }

@@ -62,6 +62,10 @@ header {
     flex-wrap: wrap;
 }
 
+.fw-400 {
+    font-weight: 400;
+}
+
 .fw-500 {
     font-weight: 500;
 }
@@ -670,4 +674,24 @@ text-align: center}
     padding-left: 40px;
     padding-right: 40px;
     font-weight: 500;
+}
+
+.menu-item {
+    margin-top: 50px;
+}
+
+.menu-item-title {
+    display: flex;
+    align-items: center;
+    color: #000;
+}
+
+.submenu {
+    margin-left: 100px;
+}
+
+.menu-icon {
+    width: 40px;
+    height: 40px;
+    padding-right: 27px;
 }

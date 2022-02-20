@@ -32,8 +32,10 @@
                 </li>
             </ul>
             <ul class="header-content">
-                <li class="header-el menu-icon">
-                    <img src="{{asset('img/icons/menu-icon.png')}}" alt="menu icon" class="img-icon">
+                <li class="header-el menu-icon flex-center">
+                    <a href="{{ url('/menu')}}">
+                        <img src="{{asset('img/icons/menu-icon.png')}}" alt="menu icon" class="img-icon">
+                    </a>
                 </li>
                 <li class="header-el search-form">
                     <input type="text" name="search" id="search" class="form-input search" placeholder="Книга, автор">
