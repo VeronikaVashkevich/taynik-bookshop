@@ -50,6 +50,7 @@ class DashboardController extends Controller
         $book->price_sale = $request->price_sale;
         $book->year = $request->year;
         $book->genre = $request->genre;
+        $book->sub_category = $request->sub_category;
         $book->description = $request->description;
         $book->age = $request->age;
         $book->length = $request->length;
@@ -85,6 +86,7 @@ class DashboardController extends Controller
         $book->price_sale = $request->price_sale;
         $book->year = $request->year;
         $book->genre = $request->genre;
+        $book->sub_category = $request->sub_category;
         $book->description = $request->description;
         $book->age = $request->age;
         $book->length = $request->length;

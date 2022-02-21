@@ -11,6 +11,7 @@
                     <form method="POST" action="{{ url('/dashboard/store-new-book') }}" class="form" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
+                            {{-- Артикул --}}
                             <div class="col-md-6">
                                 <input id="vendor_code" type="number"
                                        class="form-control @error('vendor_code') is-invalid @enderror"
@@ -23,6 +24,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Название --}}
                             <div class="col-md-6">
                                 <input id="name" type="text"
                                        class="form-control @error('name') is-invalid @enderror"
@@ -35,6 +37,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Обложка --}}
                             <div class="col-md-6">
                                 <input id="image" type="file"
                                        class="form-control @error('image') is-invalid @enderror"
@@ -47,6 +50,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Автор --}}
                             <div class="col-md-6">
                                 <input id="author" type="text"
                                        class="form-control @error('author') is-invalid @enderror"
@@ -59,6 +63,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Кол-во страниц --}}
                             <div class="col-md-6">
                                 <input id="pages" type="number"
                                        class="form-control @error('pages') is-invalid @enderror"
@@ -71,6 +76,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Цена --}}
                             <div class="col-md-6">
                                 <input id="price" type="number"
                                        class="form-control @error('price') is-invalid @enderror"
@@ -83,6 +89,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Акционная цена --}}
                             <div class="col-md-6">
                                 <input id="price_sale" type="number"
                                        class="form-control @error('price_sale') is-invalid @enderror"
@@ -95,11 +102,12 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Дата выхода--}}
                             <div class="col-md-6">
                                 <input id="year" type="date"
                                        class="form-control @error('year') is-invalid @enderror"
                                        name="year" required
-                                       placeholder="Год выпуска">
+                                       placeholder="Дата выхода">
 
                                 @error('year')
                                 <span class="invalid-feedback" role="alert">
@@ -107,7 +115,8 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            {{-- Категория --}}
+                            <div class="col-md-6 genre">
                                 <select name="genre" id="genre" class="form-control">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->name }}">{{ $category->name }}</option>
@@ -120,6 +129,24 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Подкатегория --}}
+                            <div class="col-md-6 sub_category">
+                                <select name="sub_category" id="sub_category" class="form-control">
+                                    <option value="Современная литература">Современная литература</option>
+                                    <option value="Классика">Классика</option>
+                                    <option value="Фантастика и фэнтези">Фантастика и фэнтези</option>
+                                    <option value="Детективы">Детективы</option>
+                                    <option value="Любовные романы">Любовные романы</option>
+                                    <option value="Комиксы и манга">Комиксы и манга</option>
+                                </select>
+
+                                @error('sub_category')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            {{-- Описание --}}
                             <div class="col-md-6">
                                 <textarea name="description" class="form-control" id="description" cols="100"
                                           rows="15" placeholder="Описание"></textarea>
@@ -130,6 +157,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Рейтинг --}}
                             <div class="col-md-6">
                                 <input id="age" type="number" max="21" min="0"
                                        class="form-control @error('age') is-invalid @enderror"
@@ -142,6 +170,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Длина книги --}}
                             <div class="col-md-6">
                                 <input id="length" type="number"
                                        class="form-control @error('length') is-invalid @enderror"
@@ -154,6 +183,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Ширина книги --}}
                             <div class="col-md-6">
                                 <input id="width" type="number"
                                        class="form-control @error('width') is-invalid @enderror"
@@ -166,6 +196,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- переплет --}}
                             <div class="col-md-6">
                                 <select name="cover" id="cover" class="form-control">
                                     <option value="hard">Твердый переплет</option>
@@ -177,6 +208,7 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- Страна выпуска --}}
                             <div class="col-md-6">
                                 <select name="country" id="country" class="form-control">
                                     <option value="foreign">Зарубежная литература</option>
@@ -202,4 +234,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#genre').change(function () {
+                if ( $('#genre').find(":selected").text() !== 'Бестселлеры' && $('#genre').find(":selected").text() !== 'Художественная литература') {
+                    $('.sub_category').hide();
+                } else {
+                    $('.sub_category').show();
+                }
+            })
+        });
+    </script>
 @endsection

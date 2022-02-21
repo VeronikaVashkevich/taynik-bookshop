@@ -22,6 +22,7 @@ class Book extends Model
         'price_sale',
         'year',
         'genre',
+        'sub_category',
         'description',
         'age',
         'length',

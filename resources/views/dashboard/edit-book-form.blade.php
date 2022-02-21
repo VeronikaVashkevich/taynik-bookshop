@@ -108,7 +108,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 genre">
                                 <select name="genre" id="genre" class="form-control">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->name }}">{{ $category->name }}</option>
@@ -116,6 +116,23 @@
                                 </select>
 
                                 @error('genre')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            {{-- Подкатегория --}}
+                            <div class="col-md-6 sub_category">
+                                <select name="sub_category" id="sub_category" class="form-control">
+                                    <option value="Современная литература">Современная литература</option>
+                                    <option value="Классика">Классика</option>
+                                    <option value="Фантастика и фэнтези">Фантастика и фэнтези</option>
+                                    <option value="Детективы">Детективы</option>
+                                    <option value="Любовные романы">Любовные романы</option>
+                                    <option value="Комиксы и манга">Комиксы и манга</option>
+                                </select>
+
+                                @error('sub_category')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -203,4 +220,17 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#genre').change(function () {
+                if ( $('#genre').find(":selected").text() !== 'Бестселлеры' && $('#genre').find(":selected").text() !== 'Художественная литература') {
+                    $('.sub_category').hide();
+                } else {
+                    $('.sub_category').show();
+                }
+            })
+        });
+    </script>
 @endsection
