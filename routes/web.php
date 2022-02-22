@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [IndexController::class, 'index']);
-Route::get('/book-list', [BookController::class, 'bookList']);
+Route::post('/book-list/{category}', [BookController::class, 'bookList'])->name('bookList');
 Route::post('/book/{book_id}', [BookController::class, 'book'])->name('book');
 Route::get('/cart', [IndexController::class, 'cart']);
 Route::get('/menu', [IndexController::class, 'menu']);
