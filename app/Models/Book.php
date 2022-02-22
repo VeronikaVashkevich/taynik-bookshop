@@ -32,4 +32,8 @@ class Book extends Model
     ];
 
     public $timestamps = false;
+
+    public function reviews() {
+        return $this->hasMany(Review::class);
+    }
 }

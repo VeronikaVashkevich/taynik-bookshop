@@ -29,8 +29,11 @@ class BookController extends Controller
 
     public function book(Request $request)
     {
+        $book = Book::find($request->book_id);
+
         return view('book', [
-            'book' => DB::table('books')->where('id', '=', $request->book_id)->first(),
+            'book' => $book,
+            'reviews' => $book->reviews
         ]);
     }
 }

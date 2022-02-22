@@ -66,20 +66,14 @@
                     <div class="fs-30 fw-600">Отзывы</div>
                     <a class="fs-24 fw-500 color-dark-green" href="#">Оставить отзыв</a>
                 </div>
-                <div class="review">
-                    <div class="fs-22 fw-600">Костя</div>
-                    <div class="mt-16 fs-22 fw-500">
-                        Книга пришла в отличном состоянии. Рекомундую к прочтению. Наверное лучшее, что я читал за
-                        последний месяц.
+                @foreach($reviews as $review)
+                    <div class="review">
+                        <div class="fs-22 fw-600">{{ $review->user->name }}</div>
+                        <div class="mt-16 fs-22 fw-500">
+                            {{$review->text}}
+                        </div>
                     </div>
-                </div>
-                <div class="review">
-                    <div class="fs-22 fw-600">Алексей</div>
-                    <div class="mt-16 fs-22 fw-500">
-                        Я в полном восторге! Книга читается залпом. Обязательно куплю остальные части цикла. Думаю будет
-                        интересно прочесть их в Сингапуре:)) Книга пришла в отличном состоянии, доставили быстро.
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
 
