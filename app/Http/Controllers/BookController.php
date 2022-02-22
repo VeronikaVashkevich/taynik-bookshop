@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,10 @@ class BookController extends Controller
         ]);
     }
 
-    public function book()
+    public function book(Request $request)
     {
-        return view('book');
+        return view('book', [
+            'book' => DB::table('books')->where('id', '=', $request->book_id)->first(),
+        ]);
     }
 }

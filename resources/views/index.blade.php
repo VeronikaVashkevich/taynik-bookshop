@@ -19,8 +19,13 @@
                             <div class="book-cover">
                                 <img src="{{ $book->image }}" alt="{{ $book->name }}">
                             </div>
-                            <div class="book-title fs-24 fw-600">
-                                {{ $book->name }}
+                            <div class="book-title">
+                                <form action="{{ route('book', $book->id) }}" method="post">
+                                    @csrf
+                                    @method('post')
+                                    <input type="hidden" name="bookId" value="{{$book->id}}">
+                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white" style="text-align: left;">{{ $book->name }}</button>
+                                </form>
                             </div>
                             <div class="book-author fs-22 fw-500">
                                 {{ $book->author }}
@@ -49,7 +54,12 @@
                                 <img src="{{ $book->image }}" alt="{{ $book->name }}">
                             </div>
                             <div class="book-title fs-24 fw-600">
-                                {{ $book->name }}
+                                <form action="{{ route('book', $book->id) }}" method="post">
+                                    @csrf
+                                    @method('post')
+                                    <input type="hidden" name="bookId" value="{{$book->id}}">
+                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white" style="text-align: left;">{{ $book->name }}</button>
+                                </form>
                             </div>
                             <div class="book-author fs-22 fw-500">
                                 {{ $book->author }}
@@ -78,7 +88,12 @@
                                 <img src="{{ $book->image }}" alt="{{ $book->name }}">
                             </div>
                             <div class="book-title fs-24 fw-600">
-                                {{ $book->name }}
+                                <form action="{{ route('book', $book->id) }}" method="post">
+                                    @csrf
+                                    @method('post')
+                                    <input type="hidden" name="bookId" value="{{$book->id}}">
+                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white" style="text-align: left;">{{ $book->name }}</button>
+                                </form>
                             </div>
                             <div class="book-author fs-22 fw-500">
                                 {{ $book->author }}

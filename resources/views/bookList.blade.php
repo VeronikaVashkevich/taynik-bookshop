@@ -83,10 +83,15 @@
                 @foreach($books as $book)
                     <div class="book-small mt-30">
                         <div class="book-cover">
-                            <img src="{{asset('img/covers/любовь-ненависть.png')}}" alt="">
+                            <img src="{{ $book->image }}" alt="">
                         </div>
                         <div class="book-title fs-21 fw-600">
-                            {{ $book->name }}
+                            <form action="{{ route('book', $book->id) }}" method="post">
+                                @csrf
+                                @method('post')
+                                <input type="hidden" name="bookId" value="{{$book->id}}">
+                                <button type="submit" class="fs-24 fw-600 color-black btn bg-white" style="text-align: left;">{{ $book->name }}</button>
+                            </form>
                         </div>
                         <div class="book-author fs-19 fw-500">
                             {{ $book->author }}

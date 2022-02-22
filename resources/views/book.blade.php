@@ -11,15 +11,15 @@
         <section id="book" class="container">
             <div class="book-description">
                 <div class="cover">
-                    <img src="{{asset('img/covers/безумно%20богатые%20азиаты.png')}}" alt="обложка">
+                    <img src="{{ $book->image }}" alt="обложка">
                 </div>
                 <div class="pl-80 d-flex f-wrap">
                     <div class="justify-content-sb w-100p d-flex">
-                        <div class="fs-35 fw-600 ">Безумно богатые азиаты</div>
-                        <div class="fs-24 fw-500 vendor-code">Арт.1546321</div>
+                        <div class="fs-35 fw-600 ">{{ $book->name }}</div>
+                        <div class="fs-24 fw-500 vendor-code">Арт.{{ $book->vendor_code }}</div>
                     </div>
-                    <div class="fs-27 fw-500 mt-16">Кевин Кван, 2019</div>
-                    <div class="book-price fs-35 w-100p fw-600">35.90</div>
+                    <div class="fs-27 fw-500 mt-16">{{ $book->author }}, 2019</div>
+                    <div class="book-price fs-35 w-100p fw-600">{{ $book->price }}</div>
                     <div class="w-100p">
                         <div class="fs-24 fw-500 align-self-end">Товар на складе</div>
                         <div class="fs-24 fw-500 stock align-self-end">Наличие в магазинах</div>
@@ -30,12 +30,7 @@
             <div class="mt-75">
                 <div class="fs-30 fw-600">Описание</div>
                 <div class="mt-25 fs-22 fw-500 lh-30">
-                    Жительница Нью-Йорка Рейчел Чу планирует провести все лето в Сингапуре вместе со своим
-                    бойфрендом Ником Янгом. Но Ник не рассказал Рейчел о том, что его семья сказочно богата, а он -
-                    самый завидный жених
-                    в стране. Отдых, который планировался как тихое семейное время, оборачивается полосой
-                    препятствий, собранных из старых и новых денег, сложных отношений с родственниками и интригующих
-                    карьеристов.
+                    {{ $book->description }}
                 </div>
             </div>
             <div class="mt-70">
@@ -45,19 +40,19 @@
                 <table class="specifications">
                     <tr class="spec">
                         <td class="spec-key">Переплет</td>
-                        <td class="spec-value">Твердный</td>
+                        <td class="spec-value">{{ $book->cover }}</td>
                     </tr>
                     <tr class="spec">
                         <td class="spec-key">Возраст</td>
-                        <td class="spec-value">16+</td>
+                        <td class="spec-value">{{ $book->age }}+</td>
                     </tr>
                     <tr class="spec">
                         <td class="spec-key">Страниц</td>
-                        <td class="spec-value">480</td>
+                        <td class="spec-value">{{ $book->pages }}</td>
                     </tr>
                     <tr class="spec">
                         <td class="spec-key">Формат</td>
-                        <td class="spec-value">130х205 мм</td>
+                        <td class="spec-value">{{ $book->width }}х{{ $book->length }} мм</td>
                     </tr>
                     <tr class="spec">
                         <td class="spec-key">Год издания</td>
