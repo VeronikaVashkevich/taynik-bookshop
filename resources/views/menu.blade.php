@@ -129,25 +129,41 @@
                 <div class="menu-item">
                     <a class="menu-item-title fs-24 fw-500 mb-40" href="#">
                         <img src="{{ asset('img/icons/business-Icon.png') }}" alt="" class="menu-icon">
-                        Бизнес
+                        <form action="{{ route('bookList', 'Бизнес') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="category" value="Бизнес">
+                            <button type="submit" class="fs-24 fw-400 mb-25 bg-white border-none cursor-pointer">Бизнес</button>
+                        </form>
                     </a>
                 </div>
                 <div class="menu-item">
                     <a class="menu-item-title fs-24 fw-500 mb-40" href="#">
                         <img src="{{ asset('img/icons/psy-Icon.png') }}" alt="" class="menu-icon">
-                        Психология
+                        <form action="{{ route('bookList', 'Психология') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="category" value="Психология">
+                            <button type="submit" class="fs-24 fw-400 mb-25 bg-white border-none cursor-pointer">Психология</button>
+                        </form>
                     </a>
                 </div>
                 <div class="menu-item">
                     <a class="menu-item-title fs-24 fw-500 mb-40" href="#">
                         <img src="{{ asset('img/icons/science-Icon.png') }}" alt="" class="menu-icon">
-                        Научно-популярная литература
+                        <form action="{{ route('bookList', 'Научно-популярная психология') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="category" value="Научно-популярная психология">
+                            <button type="submit" class="fs-24 fw-400 mb-25 bg-white border-none cursor-pointer">Научно-популярная психология</button>
+                        </form>
                     </a>
                 </div>
                 <div class="menu-item">
                     <a class="menu-item-title fs-24 fw-500 mb-40" href="#">
                         <img src="{{ asset('img/icons/study-icon.png') }}" alt="" class="menu-icon">
-                        Учебная литература
+                        <form action="{{ route('bookList', 'Учебная литература') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="category" value="Учебная литература">
+                            <button type="submit" class="fs-24 fw-400 mb-25 bg-white border-none cursor-pointer">Учебная литература</button>
+                        </form>
                     </a>
                 </div>
             </div>
