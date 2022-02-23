@@ -75,7 +75,7 @@
                             <div class="col-md-6">
                                 <input id="price" type="number"
                                        class="form-control @error('price') is-invalid @enderror"
-                                       name="price" required value="{{ $book->price }}"
+                                       name="price" required value="{{ $book->price }}" step="0.01"
                                        placeholder="Цена">
 
                                 @error('price')
@@ -87,7 +87,7 @@
                             <div class="col-md-6">
                                 <input id="price_sale" type="number"
                                        class="form-control @error('price_sale') is-invalid @enderror"
-                                       name="price_sale" required value="{{ $book->price_sale }}"
+                                       name="price_sale" required value="{{ $book->price_sale }}" step="0.01"
                                        placeholder="Акционная цена">
 
                                 @error('price_sale')

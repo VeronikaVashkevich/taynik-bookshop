@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public function index()
     {
         return view('dashboard/dashboard', [
-            'books' => DB::table('books')->paginate(6)
+            'books' => DB::table('books')->orderBy('name', 'ASC')->paginate(20)
         ]);
     }
 
