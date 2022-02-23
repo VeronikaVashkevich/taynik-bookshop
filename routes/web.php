@@ -5,12 +5,13 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::post('/book-list/{category}', [BookController::class, 'bookList'])->name('bookList');
-Route::post('/book/{book_id}', [BookController::class, 'book'])->name('book');
+Route::match(['post', 'get'], '/book/{book_id}', [BookController::class, 'book'])->name('book');
 Route::get('/cart', [IndexController::class, 'cart']);
 Route::get('/menu', [IndexController::class, 'menu']);
 
@@ -20,6 +21,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::resource('books', DashboardController::class);
+Route::resource('reviews', ReviewController::class);
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);

@@ -75,6 +75,20 @@
                     </div>
                 @endforeach
             </div>
+
+            @if (Auth::check())
+            <div class="review-form mt-40">
+                <div class="fs-24 color-dark-green fw-600 mb-25">Оставить отзыв</div>
+                <form action="{{ route('reviews.store') }}" method="post">
+                    @csrf
+                    <textarea name="text" id="text" cols="30" rows="10" class="form-control"></textarea>
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                    <input type="hidden" name="book_id" value="{{ $book->id }}">
+                    <button type="submit" class="btn btn-cart">Отправить</button>
+                </form>
+            </div>
+            @endif
+
         </section>
 
         <section id="similar" class="container">

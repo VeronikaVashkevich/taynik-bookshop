@@ -54,6 +54,10 @@ header {
     background: #fff;
 }
 
+.bg-dark-green {
+    background: #0F6E5C;
+}
+
 .w-100p {
     width: 100%;
 }
@@ -643,12 +647,14 @@ footer {
 
 .form-control {
     width: calc(100% - 29px);
+    max-width: calc(100% - 29px);
     margin-bottom: 25px;
     height: 70px;
     font-family: Montserrat, serif;
     font-size: 22px;
     font-weight: 500;
     padding-left: 29px;
+    padding-top: 15px;
     border: 1px solid rgba(0, 0, 0, 1)
 }
 
