@@ -22,7 +22,7 @@
                                 <div class="book-price fs-22 fw-600">{{$book->price}}</div>
                                 <div class="fs-18 fw-500">{{ $book->attributes->author }}</div>
                                 <a href="{{route('deleteFromCart', ['id' => $book->id ])}}" class="fs-22 fw-500 color-dark-green">Удалить</a>
-                                <select name="amount" id="book-amount" class="ml-30">
+                                <select name="amount" id="book-amount" class="ml-30 js-book-amount" data-price="{{$book->price}}">
                                     @for($i = 1; $i <= 5; $i++)
                                         <option value="{{ $i }}"
                                             @if ($i == $book->quantity)
@@ -49,13 +49,30 @@
                     </div>
                     <div class="w-100p pl-25">
                         <div class="fs-20 fw-600">Итого</div>
-                        <div class="fs-22 fw-500 book-price">{{ $total }}p</div>
+                        <div class="fs-22 fw-500 book-price js-total-price">{{ $total }}p</div>
                     </div>
                     <button class="btn btn-order">Оформить заказ</button>
                 </div>
             </div>
         </section>
     </div>
+
+    <script>
+        var totalPrice = 0;
+
+        $(document).ready(function () {
+            $('.js-book-amount').each(function () {
+                $(this).change(function () {
+                    totalPrice = 0;
+                    $('.js-book-amount').each(function () {
+                        totalPrice += $(this).data('price') * $(this).val();
+                    })
+
+                    $('.js-total-price').text(totalPrice.toFixed(2) + 'р')
+                })
+            })
+        })
+    </script>
 @endsection
 
 @section('footer')
