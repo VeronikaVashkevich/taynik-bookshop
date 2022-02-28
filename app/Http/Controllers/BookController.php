@@ -57,4 +57,13 @@ class BookController extends Controller
 
         return redirect()->back();
     }
+
+    public function deleteFormCart(Request $request)
+    {
+        $sessionId = Session::getId();
+
+        \Cart::session($sessionId)->remove($request->id);
+
+        return redirect()->back();
+    }
 }

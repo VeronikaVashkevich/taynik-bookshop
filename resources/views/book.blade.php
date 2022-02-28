@@ -24,7 +24,9 @@
                         <div class="fs-24 fw-500 align-self-end">Товар на складе</div>
                         <div class="fs-24 fw-500 stock align-self-end">Наличие в магазинах</div>
                     </div>
-                    <button class="btn btn-cart-big">Положить в корзину</button>
+                    <a href="{{ route('addToCart', ['id' => $book->id]) }}">
+                        <button class="btn btn-cart-big">Положить в корзину</button>
+                    </a>
                 </div>
             </div>
             <div class="mt-75">

@@ -21,7 +21,7 @@
                                 <div class="fs-22 fw-600">{{ $book->name }}</div>
                                 <div class="book-price fs-22 fw-600">{{$book->price}}</div>
                                 <div class="fs-18 fw-500">{{ $book->attributes->author }}</div>
-                                <a href="#" class="fs-22 fw-500 color-dark-green">Удалить</a>
+                                <a href="{{route('deleteFromCart', ['id' => $book->id ])}}" class="fs-22 fw-500 color-dark-green">Удалить</a>
                                 <select name="amount" id="book-amount" class="ml-30">
                                     @for($i = 1; $i <= 5; $i++)
                                         <option value="{{ $i }}"
@@ -38,7 +38,7 @@
                     @endforeach
                 </div>
                 <div class="cart-order d-flex f-wrap">
-                    <div class="fs-22 fw-500 w-100p pl-25">Всего: 3 товара</div>
+                    <div class="fs-22 fw-500 w-100p pl-25">Всего: {{\Cart::session(\Illuminate\Support\Facades\Session::getId())->getTotalQuantity()}} товара</div>
                     <div class="w-100p pl-25">
                         <div class="fs-20 fw-500">Самовывоз: </div>
                         <div class="fs-18 fw-500 color-dark-green">ул.Плеханова 85-124</div>

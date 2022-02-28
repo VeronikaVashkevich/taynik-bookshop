@@ -21,6 +21,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/add-to-cart', [BookController::class, 'addCart'])->name('addToCart');
+Route::get('/delete-from-cart', [BookController::class, 'deleteFormCart'])->name('deleteFromCart');
 
 Route::resource('books', DashboardController::class);
 Route::resource('reviews', ReviewController::class);
