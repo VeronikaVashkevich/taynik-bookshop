@@ -66,7 +66,7 @@
                         <img src="{{asset('img/icons/cart-ico.png')}}" alt="cart icon" class="img-icon">
                     </a>
                     <div class="icon-text">
-                        <a href="{{ url('/cart') }}" class="color-dark-green"> Корзина </a>
+                        <a href="{{ url('/cart') }}" class="color-dark-green"> Корзина {{\Cart::session(\Illuminate\Support\Facades\Session::getId())->getTotalQuantity()}} </a>
                     </div>
                 </li>
             </ul>

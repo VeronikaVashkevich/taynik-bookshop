@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [IndexController::class, 'index']);
-Route::post('/book-list/{category}', [BookController::class, 'bookList'])->name('bookList');
+Route::match(['post', 'get'],'/book-list/{category}', [BookController::class, 'bookList'])->name('bookList');
 Route::match(['post', 'get'], '/book/{book_id}', [BookController::class, 'book'])->name('book');
 Route::get('/cart', [IndexController::class, 'cart']);
 Route::get('/menu', [IndexController::class, 'menu']);
@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/add-to-cart', [BookController::class, 'addCart'])->name('addToCart');
 
 Route::resource('books', DashboardController::class);
 Route::resource('reviews', ReviewController::class);

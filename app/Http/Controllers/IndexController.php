@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 
 class IndexController extends BaseController
@@ -25,7 +26,15 @@ class IndexController extends BaseController
 
     public function cart()
     {
-        return view('cart');
+        $sessionId = Session::getId();
+        \Cart::session($sessionId);
+        $cart = \Cart::getContent();
+        $total = \Cart::getTotal();
+
+        return view('cart', [
+            'cart' => $cart,
+            'total' => $total
+        ]);
     }
 
     public function menu()

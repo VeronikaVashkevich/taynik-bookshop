@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class BookController extends Controller
 {
@@ -35,5 +36,25 @@ class BookController extends Controller
             'book' => $book,
             'reviews' => $book->reviews
         ]);
+    }
+
+    public function addCart(Request $request)
+    {
+        $book = Book::query()->where(['id' => $request->id])->first();
+
+        $sessionId = Session::getId();
+
+        \Cart::session($sessionId)->add([
+            'id' => $book->id,
+            'name' => $book->name,
+            'price' => $book->price_sale ? $book->price_sale : $book->price,
+            'quantity' => 1,
+            'attributes' => [
+                'image' => $book->image,
+                'author' => $book->author,
+            ],
+        ]);
+
+        return redirect()->back();
     }
 }

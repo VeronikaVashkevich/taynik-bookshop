@@ -102,7 +102,9 @@
                                 {{ $book->price }}р
                             </div>
                             <div class="add-to-cart">
-                                <input type="button" value="В корзину" class="btn btn-cart">
+                                <a href="{{ route('addToCart', ['id' => $book->id]) }}">
+                                    <input type="button" value="В корзину" class="btn btn-cart">
+                                </a>
                             </div>
                         </div>
                     @endforeach
