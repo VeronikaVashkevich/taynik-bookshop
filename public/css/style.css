@@ -393,6 +393,7 @@ input:focus {
     width: 315px;
     display: inline-flex;
     flex-direction: column;
+    margin-bottom: 30px;
 }
 
 .book-title {
@@ -594,7 +595,6 @@ footer {
     width: 425px;
     height: 330px;
     background: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.03);
     box-sizing: border-box;
     box-shadow: 0px 109px 116px rgba(0, 0, 0, 0.07), 0px 41.9852px 36.9481px rgba(0, 0, 0, 0.0425185), 0px 8.88148px 9.45185px rgba(0, 0, 0, 0.0274815);
 }
@@ -624,6 +624,10 @@ footer {
     color: #ffffff;
     font-weight: 600;
     font-size: 22px;
+}
+
+.btn-order:disabled {
+    opacity: 0.4;
 }
 
 .card {
