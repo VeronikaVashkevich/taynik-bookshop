@@ -263,6 +263,10 @@ header {
     vertical-align: bottom;
 }
 
+.vertical-align-top {
+    vertical-align: top;
+}
+
 #header {
     background: #43C6AC;
     height: 229px;
@@ -717,14 +721,14 @@ text-align: center}
 }
 
 .dashboard-table-row {
-    height: 50px;
+    line-height: 30px;
 }
 
 .btn-link-danger {
     background: none;
     border: 0;
     color: #b61717;
-    font-size: 26px;
+    font-size: 24px;
     padding-left: 40px;
     padding-right: 40px;
     font-weight: 500;

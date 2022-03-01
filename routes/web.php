@@ -36,4 +36,6 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard/new-category', [CategoryController::class, 'create'])->name('create-category');
     Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('category-dashboard');
     Route::resource('categories', CategoryController::class);
+
+    Route::get('/dashboard/reviews', [ReviewController::class, 'index'])->name('reviewsDashboard');
 });

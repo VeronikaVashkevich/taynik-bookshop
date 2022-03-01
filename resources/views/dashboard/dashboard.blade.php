@@ -18,10 +18,17 @@
                 <div class="fs-35 fw-600">Категории</div>
                 <div>
                     <a href="{{ url('dashboard/categories') }}" class="btn btn-cart-big"
-                       style="padding-left: 20px; padding-right: 20px;">Перейти к упарвлению</a>
+                       style="padding-left: 20px; padding-right: 20px;">Перейти к управлению</a>
                 </div>
             </div>
-            <div class="mt-30"></div>
+            <div class="d-flex justify-content-sb w-100p mt-70">
+                <div class="fs-35 fw-600">Отзывы</div>
+                <div>
+                    <a href="{{ url('dashboard/reviews') }}" class="btn btn-cart-big"
+                       style="padding-left: 20px; padding-right: 20px;">Перейти к управлению</a>
+                </div>
+            </div>
+            <div class="mt-70"></div>
             <div class="d-flex justify-content-sb w-100p">
                 <div class="fs-35 fw-600">Список книг</div>
                 <div>
