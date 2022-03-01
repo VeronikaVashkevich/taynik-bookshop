@@ -504,6 +504,12 @@ footer {
 
 .filter-parameter {
     list-style-type: none;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+.fake_label {
+    vertical-align: top;
 }
 
 .filters {
@@ -662,6 +668,28 @@ footer {
     font-family: Montserrat, serif;
     font-weight: 500;
     font-size: 22px;
+}
+
+.form-checkbox {
+    display: none;
+}
+
+.form-checkbox + label{
+    background: url("../img/icons/checkbox-disabled-ico.png") no-repeat;
+    display:inline-block;
+    padding: 0 0 0 0px;
+    height: 20px;
+    width: 20px;
+    background-size: 100%;
+}
+
+.form-checkbox:checked + label{
+    background: url("../img/icons/checkbox-ico.png") no-repeat #D9F4EE;
+    display:inline-block;
+    height: 20px;
+    width: 20px;
+    background-size: 100%;
+    border-radius: 2px;
 }
 
 .btn-auth {

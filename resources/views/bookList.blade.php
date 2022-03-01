@@ -25,49 +25,71 @@
                             <td class="filter-group">
                                 <ul>
                                     <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="language" id="foreign"> Зарубежная литература
+                                        <input type="checkbox" name="language" id="foreign" class="form-checkbox">
+                                        <label for="foreign"></label>
+                                        <span class="fake_label">Зарубежная литература</span>
                                     </li>
                                     <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="language" id="russian"> Русская литература
-                                    </li>
-                                </ul>
-                            </td>
-                            <td class="filter-group">
-                                <ul>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="cover" value="hardCover"> Твердый переплет
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="cover" value="softCover"> Мягкий переплет
+                                        <input type="checkbox" name="language" id="russian" class="form-checkbox">
+                                        <label for="russian"></label>
+                                        <span class="fake_label">Русская литература</span>
                                     </li>
                                 </ul>
                             </td>
                             <td class="filter-group">
                                 <ul>
                                     <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="year" value="2021"> 2021
+                                        <input type="checkbox" name="cover" value="hardCover" class="form-checkbox" id="hardCover">
+                                        <label for="hardCover"></label>
+                                        <span class="fake_label">Твердый переплет</span>
                                     </li>
                                     <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="year" value="2020"> 2020
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="year" value="2019"> 2019
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="year" value="2018"> 2018
+                                        <input type="checkbox" name="cover" value="softCover" class="form-checkbox" id="softCover">
+                                        <label for="softCover"></label>
+                                        <span class="fake_label">Мягкий переплет</span>
                                     </li>
                                 </ul>
                             </td>
                             <td class="filter-group">
                                 <ul>
                                     <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="inStock" value="inStock"> На складе
+                                        <input type="checkbox" name="year" value="2021" class="form-checkbox" id="year2021" checked>
+                                        <label for="year2021"></label>
+                                        <span class="fake_label">2021</span>
                                     </li>
                                     <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="inStock" value="order"> Под заказ
+                                        <input type="checkbox" name="year" value="2020" class="form-checkbox" id="year2020">
+                                        <label for="year2020"></label>
+                                        <span class="fake_label">2020</span>
                                     </li>
                                     <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="inStock" value="outOfStock"> Нет в продаже
+                                        <input type="checkbox" name="year" value="2019" class="form-checkbox" id="year2019">
+                                        <label for="year2019"></label>
+                                        <span class="fake_label">2019</span>
+                                    </li>
+                                    <li class="filter-parameter fw-500 mt-16">
+                                        <input type="checkbox" name="year" value="2018" class="form-checkbox" id="year2018">
+                                        <label for="year2018"></label>
+                                        <span class="fake_label">2018</span>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="filter-group">
+                                <ul>
+                                    <li class="filter-parameter fw-500 mt-16">
+                                        <input type="checkbox" name="inStock" value="inStock" class="form-checkbox" id="inStock">
+                                        <label for="inStock"></label>
+                                        <span class="fake_label">На складе</span>
+                                    </li>
+                                    <li class="filter-parameter fw-500 mt-16">
+                                        <input type="checkbox" name="inStock" value="order" class="form-checkbox" id="order">
+                                        <label for="order"></label>
+                                        <span class="fake_label">Под заказ</span>
+                                    </li>
+                                    <li class="filter-parameter fw-500 mt-16">
+                                        <input type="checkbox" name="inStock" value="outOfStock" class="form-checkbox" id="outOfStock">
+                                        <label for="outOfStock"></label>
+                                        <span class="fake_label">Нет в продаже</span>
                                     </li>
                                 </ul>
                             </td>
