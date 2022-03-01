@@ -39,7 +39,7 @@
                             <div class="col-md-6">
                                 <input id="image" type="file"
                                        class="form-control @error('image') is-invalid @enderror"
-                                       name="image" required
+                                       name="image"
                                        placeholder="Обложка">
 
                                 @error('image')

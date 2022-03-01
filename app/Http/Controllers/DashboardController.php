@@ -42,6 +42,8 @@ class DashboardController extends Controller
 
     public function update(Request $request, Book $book)
     {
+        $oldImage = $book->image;
+
         $book->name = $request->name;
         $book->vendor_code = $request->vendor_code;
         $book->author = $request->author;
@@ -58,10 +60,14 @@ class DashboardController extends Controller
         $book->cover = $request->cover;
         $book->country = $request->country;
 
-        $uploadFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [
-            'folder' => 'covers',
-        ])->getSecurePath();
-        $book->image = $uploadFileUrl;
+        if ($request->file('image')) {
+            $uploadFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [
+                'folder' => 'covers',
+            ])->getSecurePath();
+            $book->image = $uploadFileUrl;
+        } else {
+            $book->image = $oldImage;
+        }
 
         $book->save();
 
