@@ -415,6 +415,12 @@ input:focus {
     margin-bottom: 10px;
 }
 
+.book-old-price {
+    color: #6b7280;
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
 .book-cover img {
     width: 100%;
 }

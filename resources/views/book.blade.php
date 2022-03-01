@@ -19,7 +19,13 @@
                         <div class="fs-24 fw-500 vendor-code">Арт.{{ $book->vendor_code }}</div>
                     </div>
                     <div class="fs-27 fw-500 mt-16">{{ $book->author }}, 2019</div>
-                    <div class="book-price fs-35 w-100p fw-600">{{ $book->price }}</div>
+                    <div class="book-price fs-35 w-100p fw-600">
+                        @if($book->price_sale)
+                            {{ $book->price_sale }}р
+                            <span class="book-old-price">{{ $book->price }}р</span>
+                        @else {{ $book->price }}р
+                        @endif
+                    </div>
                     <div class="w-100p">
                         <div class="fs-24 fw-500 align-self-end">Товар на складе</div>
                         <div class="fs-24 fw-500 stock align-self-end">Наличие в магазинах</div>

@@ -31,8 +31,13 @@
                                 {{ $book->author }}
                             </div>
                             <div class="book-price fs-22 fw-600">
-                                {{ $book->price }}р
+                                @if($book->price_sale)
+                                    {{ $book->price_sale }}р
+                                    <span class="book-old-price">{{ $book->price }}р</span>
+                                @else {{ $book->price }}р
+                                @endif
                             </div>
+
                             <div class="add-to-cart">
                                 <a href="{{ route('addToCart', ['id' => $book->id]) }}">
                                     <input type="button" value="В корзину" class="btn btn-cart">
@@ -67,7 +72,11 @@
                                 {{ $book->author }}
                             </div>
                             <div class="book-price fs-22 fw-600">
-                                {{ $book->price }}р
+                                @if($book->price_sale)
+                                    {{ $book->price_sale }}р
+                                    <span class="book-old-price">{{ $book->price }}р</span>
+                                @else {{ $book->price }}р
+                                @endif
                             </div>
                             <div class="add-to-cart">
                                 <a href="{{ route('addToCart', ['id' => $book->id]) }}">
@@ -103,7 +112,11 @@
                                 {{ $book->author }}
                             </div>
                             <div class="book-price fs-22 fw-600">
-                                {{ $book->price }}р
+                                @if($book->price_sale)
+                                    {{ $book->price_sale }}р
+                                    <span class="book-old-price">{{ $book->price }}р</span>
+                                @else {{ $book->price }}р
+                                @endif
                             </div>
                             <div class="add-to-cart">
                                 <a href="{{ route('addToCart', ['id' => $book->id]) }}">
