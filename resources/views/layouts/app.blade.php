@@ -40,7 +40,9 @@
                     </a>
                 </li>
                 <li class="header-el search-form">
-                    <input type="text" name="search" id="search" class="form-input search" placeholder="Книга, автор">
+                    <form action="{{ route('search') }}" method="get" class="search">
+                        <input type="text" name="search_field" id="search_field" class="form-input search" placeholder="Книга, автор" @if(isset($_GET['search_field'])) value="{{$_GET['search_field']}}" @endif>
+                    </form>
                 </li>
                 @auth
                     <li class="header-el profile flex-center">

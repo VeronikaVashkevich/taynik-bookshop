@@ -14,6 +14,7 @@ Route::match(['post', 'get'],'/book-list/{category}', [BookController::class, 'b
 Route::match(['post', 'get'], '/book/{book_id}', [BookController::class, 'book'])->name('book');
 Route::get('/cart', [IndexController::class, 'cart']);
 Route::get('/menu', [IndexController::class, 'menu']);
+Route::get('/result', [BookController::class, 'search'])->name('search');
 
 Auth::routes();
 

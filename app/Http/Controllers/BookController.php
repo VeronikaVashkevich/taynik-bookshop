@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\BookFilter;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,5 +66,14 @@ class BookController extends Controller
         \Cart::session($sessionId)->remove($request->id);
 
         return redirect()->back();
+    }
+
+    public function search(BookFilter $bookFilter)
+    {
+        $books = Book::filter($bookFilter)->paginate(20);
+
+        return view('search-result', [
+            'books' => $books,
+        ]);
     }
 }
