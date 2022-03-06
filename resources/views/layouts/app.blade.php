@@ -65,7 +65,7 @@
                 @endauth
                 <li class="header-el cart-icon flex-center">
                     <div class="cart-amount">
-                    <a href="{{ url('/cart') }}">
+                    <a href="{{ url('/cart') }}" class="cart-link">
                         <img src="{{asset('img/icons/cart-ico.png')}}" alt="cart icon" class="img-icon">
                         <div class="quantity fs-16">
                             {{\Cart::session(\Illuminate\Support\Facades\Session::getId())->getTotalQuantity()}}
