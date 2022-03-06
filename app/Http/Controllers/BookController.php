@@ -76,4 +76,11 @@ class BookController extends Controller
             'books' => $books,
         ]);
     }
+
+//    public function filterByParams(Request $request) {
+//        if ($request->ajax()) {
+//
+//            return $request->data;
+//        }
+//    }
 }

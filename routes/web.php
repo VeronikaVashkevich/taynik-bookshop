@@ -24,6 +24,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/add-to-cart', [BookController::class, 'addCart'])->name('addToCart');
 Route::get('/delete-from-cart', [BookController::class, 'deleteFormCart'])->name('deleteFromCart');
 
+//Route::get('/filter', [BookController::class, 'filterByParams'])->name('filterByParams');
+
 Route::resource('books', DashboardController::class);
 Route::resource('reviews', ReviewController::class);
 
