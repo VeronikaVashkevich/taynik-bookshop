@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -26,6 +27,8 @@ Route::get('/delete-from-cart', [BookController::class, 'deleteFormCart'])->name
 
 Route::resource('books', DashboardController::class);
 Route::resource('reviews', ReviewController::class);
+
+Route::post('/order', [OrderController::class, 'order'])->name('order');
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);

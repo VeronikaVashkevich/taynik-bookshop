@@ -62,7 +62,14 @@
                         <div class="fs-20 fw-600">Итого</div>
                         <div class="fs-22 fw-500 book-price js-total-price">{{ $total }}p</div>
                     </div>
-                    <button class="btn btn-order" @if(count($cart) == 0) disabled @endif>Оформить заказ</button>
+                    <form action="{{ route('order') }}" method="post">
+                        @csrf
+                        @if(count($cart) != 0)
+                            <input type="hidden" name="books" value="@foreach($cart as $book){{ $book->id }},@endforeach">
+                            <input type="hidden" name="totalSum" value="{{ $total }}">
+                        @endif
+                        <button class="btn btn-order" @if(count($cart) == 0) disabled @endif>Оформить заказ</button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -80,6 +87,7 @@
                     })
 
                     $('.js-total-price').text(totalPrice.toFixed(2) + 'р')
+                    $('[name="totalSum"]').val(totalPrice.toFixed(2))
                 })
             })
         })

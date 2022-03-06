@@ -42,4 +42,8 @@ class Book extends Model
     public function scopeFilter(Builder $builder, QueryFilter $filter){
         return $filter->apply($builder);
     }
+
+    public function orders() {
+        return $this->belongsToMany(Order::class);
+    }
 }
