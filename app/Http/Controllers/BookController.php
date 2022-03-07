@@ -12,6 +12,54 @@ class BookController extends Controller
 {
     public function bookList(Request $request)
     {
+        ini_set('memory_limit', '2048M');
+
+        //преобразование фильтров
+        $filters = $request->data;
+        $inputs = explode('&', "$filters");
+        $values = [];
+
+        foreach ($inputs as $input) {
+            if (!empty($input)) {
+                list($name, $val) = explode('=', "$input");
+                $values[] = [
+                    'name' => $name,
+                    'value' => $val,
+                ];
+            }
+        }
+
+        $books = [];
+        foreach ($values as $value) {
+            $name = $value['name'];
+            $value = $value['value'];
+            if ($name == 'year') {
+                $selected = DB::select(DB::raw("SELECT * FROM books WHERE year(year) = :value"), [
+                    'value' => $value
+                ]);
+                $books = array_merge($books, $selected);
+            }
+            if ($name == 'cover') {
+                $selected = DB::select(DB::raw("SELECT * FROM books WHERE cover = :value"), [
+                    'value' => $value
+                ]);
+                $books = array_merge($books, $selected);
+            }
+            if ($name == 'country') {
+                $selected = DB::select(DB::raw("SELECT * FROM books WHERE country = :value"), [
+                    'value' => $value
+                ]);
+                $books = array_merge($books, $selected);
+            }
+        }
+
+        $books = array_unique($books, SORT_REGULAR);
+
+        if ($request->ajax()) {
+            return view('filtered-books', [
+                'books' => $books,
+            ])->render();
+        }
 
         if (!empty($request->category) && !empty($request->sub_category)) {
             return view('bookList', [
@@ -27,6 +75,36 @@ class BookController extends Controller
 //        return view('bookList', [
 //            'books' => DB::table('books')->paginate(10)
 //        ]);
+    }
+
+    function array_unique_key($array, $key) {
+        $tmp = $key_array = array();
+        $i = 0;
+
+        foreach($array as $val) {
+            if (!in_array($val[$key], $key_array)) {
+                $key_array[$i] = $val[$key];
+                $tmp[$i] = $val;
+            }
+            $i++;
+        }
+        return $tmp;
+    }
+
+    public function filterByParams(Request $request) {
+
+        $books = [];
+
+        $filters = $request->data;
+
+        $books = Book::all();
+
+        if ($request->ajax()) {
+            return view('filtered-books', [
+                'books' => $books,
+                'filters' => $filters
+            ])->render();
+        }
     }
 
     public function book(Request $request)

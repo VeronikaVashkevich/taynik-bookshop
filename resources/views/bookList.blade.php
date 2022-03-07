@@ -14,87 +14,90 @@
                     Фильтр
                 </div>
                 <div class="section-content">
-                    <table class="filters mt-16">
-                        <tr class="filter-titles">
-                            <th class="fs-18 fw-500 filter-title"></th>
-                            <th class="fs-18 fw-500 filter-title">Обложка</th>
-                            <th class="fs-18 fw-500 filter-title">Год издания</th>
-                            <th class="fs-18 fw-500 filter-title">Наличие</th>
-                        </tr>
-                        <tr class="filter-body">
-                            <td class="filter-group">
-                                <ul>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="language" id="foreign" class="form-checkbox">
-                                        <label for="foreign"></label>
-                                        <span class="fake_label">Зарубежная литература</span>
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="language" id="russian" class="form-checkbox">
-                                        <label for="russian"></label>
-                                        <span class="fake_label">Русская литература</span>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td class="filter-group">
-                                <ul>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="cover" value="hardCover" class="form-checkbox" id="hardCover">
-                                        <label for="hardCover"></label>
-                                        <span class="fake_label">Твердый переплет</span>
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="cover" value="softCover" class="form-checkbox" id="softCover">
-                                        <label for="softCover"></label>
-                                        <span class="fake_label">Мягкий переплет</span>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td class="filter-group">
-                                <ul>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="year" value="2021" class="form-checkbox" id="year2021" checked>
-                                        <label for="year2021"></label>
-                                        <span class="fake_label">2021</span>
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="year" value="2020" class="form-checkbox" id="year2020">
-                                        <label for="year2020"></label>
-                                        <span class="fake_label">2020</span>
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="year" value="2019" class="form-checkbox" id="year2019">
-                                        <label for="year2019"></label>
-                                        <span class="fake_label">2019</span>
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="year" value="2018" class="form-checkbox" id="year2018">
-                                        <label for="year2018"></label>
-                                        <span class="fake_label">2018</span>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td class="filter-group">
-                                <ul>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="inStock" value="inStock" class="form-checkbox" id="inStock">
-                                        <label for="inStock"></label>
-                                        <span class="fake_label">На складе</span>
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="inStock" value="order" class="form-checkbox" id="order">
-                                        <label for="order"></label>
-                                        <span class="fake_label">Под заказ</span>
-                                    </li>
-                                    <li class="filter-parameter fw-500 mt-16">
-                                        <input type="checkbox" name="inStock" value="outOfStock" class="form-checkbox" id="outOfStock">
-                                        <label for="outOfStock"></label>
-                                        <span class="fake_label">Нет в продаже</span>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </table>
+                    <form action="{{ route('filterByParams') }}" method="post">
+{{--                        {!! csrf_field() !!}--}}
+                        <table class="filters mt-16">
+                            <tr class="filter-titles">
+                                <th class="fs-18 fw-500 filter-title"></th>
+                                <th class="fs-18 fw-500 filter-title">Обложка</th>
+                                <th class="fs-18 fw-500 filter-title">Год издания</th>
+                                <th class="fs-18 fw-500 filter-title">Наличие</th>
+                            </tr>
+                            <tr class="filter-body">
+                                <td class="filter-group">
+                                    <ul>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="country" id="foreign" value="foreign" class="form-checkbox">
+                                            <label for="foreign"></label>
+                                            <span class="fake_label">Зарубежная литература</span>
+                                        </li>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="country" id="russian" value="russian" class="form-checkbox">
+                                            <label for="russian"></label>
+                                            <span class="fake_label">Русская литература</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="filter-group">
+                                    <ul>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="cover" value="hard" class="form-checkbox" id="hardCover">
+                                            <label for="hardCover"></label>
+                                            <span class="fake_label">Твердый переплет</span>
+                                        </li>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="cover" value="soft" class="form-checkbox" id="softCover">
+                                            <label for="softCover"></label>
+                                            <span class="fake_label">Мягкий переплет</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="filter-group">
+                                    <ul>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="year" value="2021" class="form-checkbox" id="year2021" checked>
+                                            <label for="year2021"></label>
+                                            <span class="fake_label">2021</span>
+                                        </li>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="year" value="2020" class="form-checkbox" id="year2020">
+                                            <label for="year2020"></label>
+                                            <span class="fake_label">2020</span>
+                                        </li>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="year" value="2019" class="form-checkbox" id="year2019">
+                                            <label for="year2019"></label>
+                                            <span class="fake_label">2019</span>
+                                        </li>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="year" value="2018" class="form-checkbox" id="year2018">
+                                            <label for="year2018"></label>
+                                            <span class="fake_label">2018</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="filter-group">
+                                    <ul>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="inStock" value="inStock" class="form-checkbox" id="inStock">
+                                            <label for="inStock"></label>
+                                            <span class="fake_label">На складе</span>
+                                        </li>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="inStock" value="order" class="form-checkbox" id="order">
+                                            <label for="order"></label>
+                                            <span class="fake_label">Под заказ</span>
+                                        </li>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="inStock" value="outOfStock" class="form-checkbox" id="outOfStock">
+                                            <label for="outOfStock"></label>
+                                            <span class="fake_label">Нет в продаже</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
                     <div class="sorting">
 
                     </div>
@@ -150,6 +153,32 @@
             </div>
         @endif
     </div>
+
+        <script>
+            $(document).ready(function () {
+                $('.form-checkbox').each(function() {
+                    $(this).click(function () {
+                        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+
+                        $.ajax({
+                            url: '{{ route('bookList') }}',
+                            type: "GET",
+                            data: {
+                                '_token': $('meta[name="csrf-token"]').attr('content'),
+                                data: $('.form-checkbox:checked').serialize(),
+                            },
+                            success: (data)=> {
+                                $('#catalog').html(data);
+                            }
+                        })
+                    })
+                })
+            })
+        </script>
 @endsection
 
 @section('footer')

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [IndexController::class, 'index']);
-Route::match(['post', 'get'],'/book-list/{category}', [BookController::class, 'bookList'])->name('bookList');
+Route::match(['post', 'get', 'put'],'/book-list', [BookController::class, 'bookList'])->name('bookList');
 Route::match(['post', 'get'], '/book/{book_id}', [BookController::class, 'book'])->name('book');
 Route::get('/cart', [IndexController::class, 'cart']);
 Route::get('/menu', [IndexController::class, 'menu']);
@@ -31,6 +31,8 @@ Route::resource('reviews', ReviewController::class);
 Route::get('/order-confirm', [OrderController::class, 'order'])->name('nonAuthOrderConfirm');
 
 Route::post('/order', [OrderController::class, 'order'])->name('order');
+
+Route::get('/filter', [BookController::class, 'filterByParams'])->name('filterByParams');
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);

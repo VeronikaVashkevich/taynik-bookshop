@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href={{asset("css/style.css")}}>
     <script src="{{ asset('js/common.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -88,7 +89,7 @@
         <div class="container f-between">
             <div class="left">
                 <div class="copyright">
-                    ООО “Тайник”, 2017-2021
+                    ООО “Тайник”, 2017- {{ date('Y') }}
                 </div>
                 <div class="slogan">
                     Дарим радость всем и каждому
