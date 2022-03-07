@@ -28,6 +28,8 @@ Route::get('/delete-from-cart', [BookController::class, 'deleteFormCart'])->name
 Route::resource('books', DashboardController::class);
 Route::resource('reviews', ReviewController::class);
 
+Route::get('/order-confirm', [OrderController::class, 'order'])->name('nonAuthOrderConfirm');
+
 Route::post('/order', [OrderController::class, 'order'])->name('order');
 
 Route::group(['middleware' => ['role:admin']], function () {

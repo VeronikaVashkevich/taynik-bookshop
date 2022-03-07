@@ -87,28 +87,34 @@ class OrderController extends Controller
 
     public function order(Request $request)
     {
-        //получаем строку с айди, делаем из нее массив через explode, удаляем пустые улементы через array_filter
-        $bookIds = array_filter(explode(',', $request->books));
+        if (Auth::user()) {
+            //получаем строку с айди, делаем из нее массив через explode, удаляем пустые улементы через array_filter
+            $bookIds = array_filter(explode(',', $request->books));
 
-        $order = new Order;
-        //случайно число
-        $order->number = mt_rand();
-        $order->totalSum = $request->totalSum;
-        //айди авторизированного пользователя
-        $order->user_id = Auth::id();
-        $order->setCreatedAt(date('Y-m-d H:i:s'));
-        $order->setUpdatedAt(date('Y-m-d H:i:s'));
-        //сохраняем заказ чтоб получить его айди
-        $order->save();
+            $order = new Order;
+            //случайно число
+            $order->number = mt_rand();
+            $order->totalSum = $request->totalSum;
+            //айди авторизированного пользователя
+            $order->user_id = Auth::id();
+            $order->setCreatedAt(date('Y-m-d H:i:s'));
+            $order->setUpdatedAt(date('Y-m-d H:i:s'));
+            //сохраняем заказ чтоб получить его айди
+            $order->save();
 
-        //сохраняем книги заказа
-        foreach ($bookIds as $id) {
-            DB::table('order_book')->insert([
-                'order_id' => $order->id,
-                'book_id' => $id,
-            ]);
+            //сохраняем книги заказа
+            foreach ($bookIds as $id) {
+                DB::table('order_book')->insert([
+                    'order_id' => $order->id,
+                    'book_id' => $id,
+                ]);
+            }
+
+            return redirect()->action([HomeController::class, 'index']);
+        } else {
+            return view('not-auth-order-confirm');
         }
-
-        return redirect()->action([HomeController::class, 'index']);
     }
+
+
 }
