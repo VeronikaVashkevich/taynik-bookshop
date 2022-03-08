@@ -55,7 +55,12 @@
                                 <td class="filter-group">
                                     <ul>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="year" value="2021" class="form-checkbox" id="year2021" checked>
+                                            <input type="checkbox" name="year" value="2022" class="form-checkbox" id="year2022">
+                                            <label for="year2022"></label>
+                                            <span class="fake_label">2022</span>
+                                        </li>
+                                        <li class="filter-parameter fw-500 mt-16">
+                                            <input type="checkbox" name="year" value="2021" class="form-checkbox" id="year2021">
                                             <label for="year2021"></label>
                                             <span class="fake_label">2021</span>
                                         </li>

@@ -19,6 +19,10 @@ class BookController extends Controller
         $inputs = explode('&', "$filters");
         $values = [];
 
+        $covers = [];
+        $years = [];
+        $countries = [];
+
         foreach ($inputs as $input) {
             if (!empty($input)) {
                 list($name, $val) = explode('=', "$input");
@@ -26,31 +30,40 @@ class BookController extends Controller
                     'name' => $name,
                     'value' => $val,
                 ];
+
+                if ($name == 'cover') {
+                    $covers[] = $val;
+                } else if ($name == 'country') {
+                    $countries[] = $val;
+                } else if ($name == 'year') {
+                    $years[] = $val;
+                }
             }
         }
 
         $books = [];
-        foreach ($values as $value) {
-            $name = $value['name'];
-            $value = $value['value'];
-            if ($name == 'year') {
-                $selected = DB::select(DB::raw("SELECT * FROM books WHERE year(year) = :value"), [
-                    'value' => $value
-                ]);
-                $books = array_merge($books, $selected);
-            }
-            if ($name == 'cover') {
-                $selected = DB::select(DB::raw("SELECT * FROM books WHERE cover = :value"), [
-                    'value' => $value
-                ]);
-                $books = array_merge($books, $selected);
-            }
-            if ($name == 'country') {
-                $selected = DB::select(DB::raw("SELECT * FROM books WHERE country = :value"), [
-                    'value' => $value
-                ]);
-                $books = array_merge($books, $selected);
-            }
+        if (!empty($request->category) && !empty($request->sub_category)) {
+            $books =  DB::table('books')
+                ->where('genre', '=', $request->category)
+                ->where('sub_category', '=', $request->sub_category)
+                ->when(!empty($covers), function ($q) use($covers) {
+                    return $q->whereIn('cover', $covers);
+                })
+                ->when(!empty($years), function ($q) use($years){
+                    return $q->where(function($q) use($years) {
+                        foreach ($years as $year) {
+                            $q->whereYear('year', '=', $year, 'or');
+                        }
+                    });
+                })
+                ->when(!empty($countries), function ($q) use($countries) {
+                    return $q->whereIn('country', $countries);
+                })
+                ->get()->toArray();
+        } else if (!empty($request->category)){
+            $books = DB::table('books')
+                ->where('genre', '=', $request->category)
+                ->get()->toArray();
         }
 
         $books = array_unique($books, SORT_REGULAR);
