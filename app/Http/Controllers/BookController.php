@@ -17,19 +17,16 @@ class BookController extends Controller
         //преобразование фильтров
         $filters = $request->data;
         $inputs = explode('&', "$filters");
-        $values = [];
 
+        //массивы для фильтрации
         $covers = [];
         $years = [];
         $countries = [];
 
+        //формируем массивы для фильтрации по типу фильтра
         foreach ($inputs as $input) {
             if (!empty($input)) {
                 list($name, $val) = explode('=', "$input");
-                $values[] = [
-                    'name' => $name,
-                    'value' => $val,
-                ];
 
                 if ($name == 'cover') {
                     $covers[] = $val;
@@ -43,6 +40,7 @@ class BookController extends Controller
 
         $books = [];
         if (!empty($request->category) && !empty($request->sub_category)) {
+            //если у книги есть подкатегория
             $books =  DB::table('books')
                 ->where('genre', '=', $request->category)
                 ->where('sub_category', '=', $request->sub_category)
@@ -60,7 +58,9 @@ class BookController extends Controller
                     return $q->whereIn('country', $countries);
                 })
                 ->get()->toArray();
+
         } else if (!empty($request->category)){
+            //если у книги нет подкатегории
             $books = DB::table('books')
                 ->where('genre', '=', $request->category)
                 ->when(!empty($covers), function ($q) use($covers) {
@@ -79,8 +79,11 @@ class BookController extends Controller
                 ->get()->toArray();
         }
 
+        //убираются повторяющиеся значения (хотя вроде как это не имеет смысла)
         $books = array_unique($books, SORT_REGULAR);
 
+        //при фильтрации отправляется ajax запрос
+        //и рендерится шаблон с книгами
         if ($request->ajax()) {
             return view('filtered-books', [
                 'books' => $books,
