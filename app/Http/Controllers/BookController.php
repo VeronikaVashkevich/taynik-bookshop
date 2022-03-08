@@ -63,6 +63,19 @@ class BookController extends Controller
         } else if (!empty($request->category)){
             $books = DB::table('books')
                 ->where('genre', '=', $request->category)
+                ->when(!empty($covers), function ($q) use($covers) {
+                    return $q->whereIn('cover', $covers);
+                })
+                ->when(!empty($years), function ($q) use($years){
+                    return $q->where(function($q) use($years) {
+                        foreach ($years as $year) {
+                            $q->whereYear('year', '=', $year, 'or');
+                        }
+                    });
+                })
+                ->when(!empty($countries), function ($q) use($countries) {
+                    return $q->whereIn('country', $countries);
+                })
                 ->get()->toArray();
         }
 
