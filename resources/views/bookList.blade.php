@@ -170,6 +170,8 @@
                             data: {
                                 '_token': $('meta[name="csrf-token"]').attr('content'),
                                 data: $('.form-checkbox:checked').serialize(),
+                                'category': '<?php echo $_GET['category'] ?>',
+                                'sub_category': '<?php echo !empty($_GET['sub_category']) ? $_GET['sub_category'] : '' ?>'
                             },
                             success: (data)=> {
                                 $('#catalog').html(data);

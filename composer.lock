@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1f21ea38520972d36592b9b62c266f5",
+    "content-hash": "cd8062641c497632f97d7e1637d76750",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3503,6 +3503,49 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "rogervila/array-diff-multidimensional",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rogervila/array-diff-multidimensional.git",
+                "reference": "d5afb18bfc256bf9d792594fa998f7af68179db0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rogervila/array-diff-multidimensional/zipball/d5afb18bfc256bf9d792594fa998f7af68179db0",
+                "reference": "d5afb18bfc256bf9d792594fa998f7af68179db0",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Rogervila\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roger Vilà",
+                    "email": "rogervila@me.com"
+                }
+            ],
+            "description": "Compare the difference between two multidimensional arrays",
+            "support": {
+                "issues": "https://github.com/rogervila/array-diff-multidimensional/issues",
+                "source": "https://github.com/rogervila/array-diff-multidimensional/tree/2.1.0"
+            },
+            "time": "2021-10-28T08:07:19+00:00"
         },
         {
             "name": "shrikeh/teapot",
@@ -8735,7 +8778,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
