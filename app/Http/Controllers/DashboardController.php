@@ -59,6 +59,7 @@ class DashboardController extends Controller
         $book->width = $request->width;
         $book->cover = $request->cover;
         $book->country = $request->country;
+        $book->amount = $request->amount;
 
         if ($request->file('image')) {
             $uploadFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [
@@ -99,6 +100,7 @@ class DashboardController extends Controller
         $book->width = $request->width;
         $book->cover = $request->cover;
         $book->country = $request->country;
+        $book->amount = $request->amount;
 
         $uploadFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [
             'folder' => 'covers',

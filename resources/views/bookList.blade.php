@@ -66,17 +66,17 @@
                                 <td class="filter-group">
                                     <ul>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="inStock" value="inStock" class="form-checkbox" id="inStock">
+                                            <input type="checkbox" name="inStock" value="1" class="form-checkbox" id="inStock">
                                             <label for="inStock"></label>
                                             <span class="fake_label">На складе</span>
                                         </li>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="inStock" value="order" class="form-checkbox" id="order">
+                                            <input type="checkbox" name="inStock" value="0" class="form-checkbox" id="order">
                                             <label for="order"></label>
                                             <span class="fake_label">Под заказ</span>
                                         </li>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="inStock" value="outOfStock" class="form-checkbox" id="outOfStock">
+                                            <input type="checkbox" name="inStock" value="0" class="form-checkbox" id="outOfStock">
                                             <label for="outOfStock"></label>
                                             <span class="fake_label">Нет в продаже</span>
                                         </li>
@@ -140,8 +140,6 @@
             </div>
         @endif
     </div>
-
-    {{ var_dump($years) }}
 
         <script>
             $(document).ready(function () {

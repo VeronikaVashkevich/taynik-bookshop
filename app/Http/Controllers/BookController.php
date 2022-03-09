@@ -22,6 +22,7 @@ class BookController extends Controller
         $covers = [];
         $years = [];
         $countries = [];
+        $stock = [];
 
         //формируем массивы для фильтрации по типу фильтра
         foreach ($inputs as $input) {
@@ -34,11 +35,14 @@ class BookController extends Controller
                     $countries[] = $val;
                 } else if ($name == 'year') {
                     $years[] = $val;
+                } else if ($name == 'inStock') {
+                    $stock[] = $val;
                 }
             }
         }
 
         $books = [];
+        //@TODO чтоб избежать sql injection сделать валидацию категории и подкатегории
         if (!empty($request->category) && !empty($request->sub_category)) {
             //если у книги есть подкатегория
             $books =  DB::table('books')
@@ -56,6 +60,20 @@ class BookController extends Controller
                 })
                 ->when(!empty($countries), function ($q) use($countries) {
                     return $q->whereIn('country', $countries);
+                })
+                ->when(!empty($stock), function ($q) use($stock){
+                    return $q->where(function($q) use($stock) {
+                        foreach ($stock as $s) {
+                            if ($s == 0) {
+                                $q->where('amount', '=', 0, 'or');
+                                continue;
+                            }
+                            if ($s == 1){
+                                $q->where('amount', '>=', $s, 'or');
+                                continue;
+                            }
+                        }
+                    });
                 })
                 ->get()->toArray();
 

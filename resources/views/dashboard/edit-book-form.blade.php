@@ -206,6 +206,19 @@
                                     </span>
                                 @enderror
                             </div>
+                            {{-- количество на складе --}}
+                            <div class="col-md-6">
+                                <input id="amount" type="number"
+                                       class="form-control @error('amount') is-invalid @enderror"
+                                       name="amount" required min="0"
+                                       placeholder="Количество на складе">
+
+                                @error('amount')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">

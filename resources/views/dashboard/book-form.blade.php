@@ -67,7 +67,7 @@
                             <div class="col-md-6">
                                 <input id="pages" type="number"
                                        class="form-control @error('pages') is-invalid @enderror"
-                                       name="pages" required
+                                       name="pages" required min="0"
                                        placeholder="Количество страниц">
 
                                 @error('pages')
@@ -80,7 +80,7 @@
                             <div class="col-md-6">
                                 <input id="price" type="number"
                                        class="form-control @error('price') is-invalid @enderror"
-                                       name="price" required step="0.01"
+                                       name="price" required step="0.01" min="0"
                                        placeholder="Цена">
 
                                 @error('price')
@@ -93,7 +93,7 @@
                             <div class="col-md-6">
                                 <input id="price_sale" type="number"
                                        class="form-control @error('price_sale') is-invalid @enderror"
-                                       name="price_sale" step="0.01"
+                                       name="price_sale" step="0.01" min="0"
                                        placeholder="Акционная цена">
 
                                 @error('price_sale')
@@ -174,7 +174,7 @@
                             <div class="col-md-6">
                                 <input id="length" type="number"
                                        class="form-control @error('length') is-invalid @enderror"
-                                       name="length" required
+                                       name="length" required min="0"
                                        placeholder="Длина книги, мм">
 
                                 @error('length')
@@ -187,7 +187,7 @@
                             <div class="col-md-6">
                                 <input id="width" type="number"
                                        class="form-control @error('width') is-invalid @enderror"
-                                       name="width" required
+                                       name="width" required min="0"
                                        placeholder="Ширина книги, мм">
 
                                 @error('width')
@@ -215,6 +215,19 @@
                                     <option value="russian">Русская литература</option>
                                 </select>
                                 @error('country')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            {{-- количество на складе --}}
+                            <div class="col-md-6">
+                                <input id="amount" type="number"
+                                       class="form-control @error('amount') is-invalid @enderror"
+                                       name="amount" required min="0"
+                                       placeholder="Количество на складе">
+
+                                @error('amount')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
