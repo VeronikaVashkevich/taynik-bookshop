@@ -91,12 +91,26 @@ class BookController extends Controller
         }
 
         if (!empty($request->category) && !empty($request->sub_category)) {
+            $books = DB::table('books')
+                ->where('genre', '=', $request->category)
+                ->where('sub_category', '=', $request->sub_category)
+                ->paginate(12);
+
+            $years = $this->getYearFilters($books);
+
             return view('bookList', [
-                'books' => DB::table('books')->where('genre', '=', $request->category)->where('sub_category', '=', $request->sub_category)->paginate(12)
+                'books' => $books,
+                'years' => $years,
             ]);
         } else if (!empty($request->category)){
+            $books = DB::table('books')
+                ->where('genre', '=', $request->category)
+                ->paginate(12);
+            $years = $this->getYearFilters($books);
+
             return view('bookList', [
-                'books' => DB::table('books')->where('genre', '=', $request->category)->paginate(12)
+                'books' => $books,
+                'years' => $years,
             ]);
         }
 
@@ -104,6 +118,17 @@ class BookController extends Controller
 //        return view('bookList', [
 //            'books' => DB::table('books')->paginate(10)
 //        ]);
+    }
+
+    public function getYearFilters($books) {
+        $years = [];
+
+        foreach ($books as $book) {
+            $years[] = date('Y', strtotime($book->year));
+        }
+
+        //@TODo возможно стоит так же возвращать года между, чтоб выглядело красиво (если тут 2017 и 2020, то еще воз-ть 2018 и 2019)
+        return array_unique($years);
     }
 
     public function filterByParams(Request $request) {

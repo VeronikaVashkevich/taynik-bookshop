@@ -54,31 +54,13 @@
                                 </td>
                                 <td class="filter-group">
                                     <ul>
-                                        <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="year" value="2022" class="form-checkbox" id="year2022">
-                                            <label for="year2022"></label>
-                                            <span class="fake_label">2022</span>
-                                        </li>
-                                        <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="year" value="2021" class="form-checkbox" id="year2021">
-                                            <label for="year2021"></label>
-                                            <span class="fake_label">2021</span>
-                                        </li>
-                                        <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="year" value="2020" class="form-checkbox" id="year2020">
-                                            <label for="year2020"></label>
-                                            <span class="fake_label">2020</span>
-                                        </li>
-                                        <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="year" value="2019" class="form-checkbox" id="year2019">
-                                            <label for="year2019"></label>
-                                            <span class="fake_label">2019</span>
-                                        </li>
-                                        <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="year" value="2018" class="form-checkbox" id="year2018">
-                                            <label for="year2018"></label>
-                                            <span class="fake_label">2018</span>
-                                        </li>
+                                        @foreach($years as $year)
+                                            <li class="filter-parameter fw-500 mt-16">
+                                                <input type="checkbox" name="year" value="{{ $year }}" class="form-checkbox" id="year{{ $year }}">
+                                                <label for="year{{ $year }}"></label>
+                                                <span class="fake_label">{{ $year }}</span>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </td>
                                 <td class="filter-group">
@@ -158,6 +140,8 @@
             </div>
         @endif
     </div>
+
+    {{ var_dump($years) }}
 
         <script>
             $(document).ready(function () {
