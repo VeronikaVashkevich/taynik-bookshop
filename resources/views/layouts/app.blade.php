@@ -22,7 +22,7 @@
             <a href="{{ url('/') }}" style="color: inherit">Тайник</a>
         </div>
         <section id="header">
-            <ul class="header-content">
+            <ul class="header-content header-content-info">
                 <li class="header-el wishes">
                     Желаем вам удачных покупок и отличного настроения!
                 </li>
@@ -34,7 +34,7 @@
                     754-33-23
                 </li>
             </ul>
-            <ul class="header-content">
+            <ul class="header-content header-content-blocks">
                 <li class="header-el menu-icon flex-center">
                     <a href="{{ url('/menu')}}">
                         <img src="{{asset('img/icons/menu-icon.png')}}" alt="menu icon" class="img-icon">
@@ -45,6 +45,7 @@
                         <input type="text" name="search_field" id="search_field" class="form-input search" placeholder="Книга, автор" @if(isset($_GET['search_field'])) value="{{$_GET['search_field']}}" @endif>
                     </form>
                 </li>
+                <li class="separator"></li>
                 @auth
                     <li class="header-el profile flex-center">
                         <a href="{{ url('/logout') }}">

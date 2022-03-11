@@ -809,3 +809,55 @@ text-align: center}
     vertical-align: top;
     margin-top: 150px;
 }
+
+@media screen and (max-width: 1400px){
+    .book {
+        width: 275px;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .book {
+        width: 230px;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    #header {
+        height: 600px;
+    }
+
+    .book {
+        width: 175px;
+    }
+
+    .wishes {
+        text-align: center;
+    }
+
+    .header-content-info {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-el {
+        margin-top: 30px;
+    }
+
+    .search-form {
+        width: 70%;
+        margin: 0;
+    }
+
+    .header-content-blocks {
+        flex-wrap: wrap;
+    }
+
+    .header-content-blocks .separator {
+        width: 100%;
+        list-style-type: none;
+    }
+}
