@@ -169,9 +169,16 @@ class BookController extends Controller
     {
         $book = Book::find($request->book_id);
 
+        $recommendations = Book::query()
+            ->where('genre', $book->genre)
+            ->where('id', '<>', $book->id)
+            ->limit(2)
+            ->get();
+
         return view('book', [
             'book' => $book,
-            'reviews' => $book->reviews
+            'reviews' => $book->reviews,
+            'recommendations' => $recommendations,
         ]);
     }
 

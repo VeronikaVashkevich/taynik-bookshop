@@ -85,50 +85,43 @@
             </div>
 
             @if (Auth::check())
-            <div class="review-form mt-40">
-                <div class="fs-24 color-dark-green fw-600 mb-25">Оставить отзыв</div>
-                <form action="{{ route('reviews.store') }}" method="post">
-                    @csrf
-                    <textarea name="text" id="text" cols="30" rows="10" class="form-control"></textarea>
-                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                    <input type="hidden" name="book_id" value="{{ $book->id }}">
-                    <button type="submit" class="btn btn-cart">Отправить</button>
-                </form>
-            </div>
+                <div class="review-form mt-40">
+                    <div class="fs-24 color-dark-green fw-600 mb-25">Оставить отзыв</div>
+                    <form action="{{ route('reviews.store') }}" method="post">
+                        @csrf
+                        <textarea name="text" id="text" cols="30" rows="10" class="form-control"></textarea>
+                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                        <input type="hidden" name="book_id" value="{{ $book->id }}">
+                        <button type="submit" class="btn btn-cart">Отправить</button>
+                    </form>
+                </div>
             @endif
 
         </section>
 
         <section id="similar" class="container">
             <div class="d-flex justify-content-start">
-                <div class="book-small pr-90">
-                    <div class="book-cover">
-                        <img src="{{asset('img/covers/крылья.png')}}" alt="">
+                @foreach($recommendations as $book)
+                    <div class="book-small pr-90">
+                        <div class="book-cover">
+                            <img src="{{ $book->image }}" alt="">
+                        </div>
+                        <div class="book-title fs-21 fw-600">
+                            {{ $book->name }}
+                        </div>
+                        <div class="book-author fs-19 fw-500">
+                            {{ $book->author }}
+                        </div>
+                        <div class="book-price fs-22 fw-600">
+                            @if($book->price_sale)
+                                {{ $book->price_sale }}р
+                                <span class="book-old-price">{{ $book->price }}р</span>
+                            @else
+                                {{ $book->price }}р
+                            @endif
+                        </div>
                     </div>
-                    <div class="book-title fs-21 fw-600">
-                        Крылья
-                    </div>
-                    <div class="book-author fs-19 fw-500">
-                        Кристина Старк
-                    </div>
-                    <div class="book-price fs-22 fw-600">
-                        17.35р
-                    </div>
-                </div>
-                <div class="book-small pr-90">
-                    <div class="book-cover">
-                        <img src="{{asset('img/covers/зулейха%20открыывает%20глаза.png')}}" alt="">
-                    </div>
-                    <div class="book-title fs-21 fw-600">
-                        Зулейха открывает глаза
-                    </div>
-                    <div class="book-author fs-19 fw-500">
-                        Гузель Яхина
-                    </div>
-                    <div class="book-price fs-22 fw-600">
-                        14.50р
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
     </div>
