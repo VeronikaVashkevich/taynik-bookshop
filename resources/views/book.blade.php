@@ -13,7 +13,7 @@
                 <div class="cover">
                     <img src="{{ $book->image }}" alt="обложка">
                 </div>
-                <div class="pl-80 d-flex f-wrap">
+                <div class="pl-80 d-flex f-wrap short-description">
                     <div class="justify-content-sb w-100p d-flex">
                         <div class="fs-35 fw-600 ">{{ $book->name }}</div>
                         <div class="fs-24 fw-500 vendor-code">Арт.{{ $book->vendor_code }}</div>
@@ -100,7 +100,7 @@
         </section>
 
         <section id="similar" class="container">
-            <div class="d-flex justify-content-start">
+            <div class="d-flex justify-content-start recommendations">
                 @foreach($recommendations as $book)
                     <div class="book-small pr-90">
                         <div class="book-cover">
