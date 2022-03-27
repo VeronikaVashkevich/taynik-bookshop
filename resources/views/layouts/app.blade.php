@@ -45,7 +45,6 @@
                         <input type="text" name="search_field" id="search_field" class="form-input search" placeholder="Книга, автор" @if(isset($_GET['search_field'])) value="{{$_GET['search_field']}}" @endif>
                     </form>
                 </li>
-                <li class="separator"></li>
                 @auth
                     <li class="header-el profile flex-center">
                         <a href="{{ url('/logout') }}">
@@ -87,7 +86,7 @@
 
 @section('footer')
     <footer>
-        <div class="container f-between">
+        <div class="container f-between footer">
             <div class="left">
                 <div class="copyright">
                     ООО “Тайник”, 2017- {{ date('Y') }}

@@ -814,11 +814,28 @@ text-align: center}
     .book {
         width: 275px;
     }
+
+    .cart {
+        flex-direction: column;
+    }
+
+    .cart-books {
+        width: 80%;
+    }
+
+    .cart-order, .btn-order {
+        width: 375px;
+    }
+
+    .card {
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 1200px){
     .book {
         width: 230px;
+        padding-right: 25px;
     }
 }
 
@@ -828,7 +845,7 @@ text-align: center}
     }
 
     .book {
-        width: 175px;
+        width: 200px;
     }
 
     .wishes {
@@ -848,8 +865,12 @@ text-align: center}
     }
 
     .search-form {
-        width: 70%;
-        margin: 0;
+        width: 80%;
+        margin: 0 25px 0 0;
+    }
+
+    .menu-icon {
+        padding: 0;
     }
 
     .header-content-blocks {
@@ -859,5 +880,45 @@ text-align: center}
     .header-content-blocks .separator {
         width: 100%;
         list-style-type: none;
+    }
+
+    .book-small {
+        padding-right: 30px;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .book {
+        width: 315px;
+    }
+
+    .search-form {
+        width: 80%;
+    }
+
+    .books, .section-title {
+        justify-content: center;
+        display: flex;
+    }
+
+    .header-content-blocks {
+        flex-wrap: wrap;
+    }
+
+    .book-small {
+        width: 70%;
+        padding: 0;
+    }
+
+    .footer {
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 30px;
+    }
+
+    .right, .left {
+        width: 100%;
+        margin-top: 30px;
+        text-align: center;
     }
 }

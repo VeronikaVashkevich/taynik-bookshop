@@ -56,7 +56,7 @@
                     </div>
                     <div class="w-100p pl-25">
                         <div class="fs-20 fw-500">Оплата</div>
-                        <div class="fs-18 fw-500 color-dark-green">При получении</div>
+                        <div class="fs-18 fw-500 color-grey">При получении</div>
                     </div>
                     <div class="w-100p pl-25">
                         <div class="fs-20 fw-600">Итого</div>
