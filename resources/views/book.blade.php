@@ -28,7 +28,6 @@
                     </div>
                     <div class="w-100p">
                         <div class="fs-24 fw-500 align-self-end">Товар на складе</div>
-                        <div class="fs-24 fw-500 stock align-self-end">Наличие в магазинах</div>
                     </div>
                     <a href="{{ route('addToCart', ['id' => $book->id]) }}">
                         <button class="btn btn-cart-big">Положить в корзину</button>
@@ -86,7 +85,6 @@
 
             @if (Auth::check())
                 <div class="review-form mt-40">
-                    <div class="fs-24 color-dark-green fw-600 mb-25">Оставить отзыв</div>
                     <form action="{{ route('reviews.store') }}" method="post">
                         @csrf
                         <textarea name="text" id="text" cols="30" rows="10" class="form-control"></textarea>
