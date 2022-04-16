@@ -31,8 +31,6 @@ class IndexController extends BaseController
         $cart = \Cart::getContent();
         $total = \Cart::getTotal();
 
-        echo "<pre/>";var_dump($cart);
-
         return view('cart', [
             'cart' => $cart,
             'total' => $total
