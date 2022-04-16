@@ -64,7 +64,7 @@
                             <form action="{{ route('bookList', 'Комиксы и манга') }}" method="get">
                                 @csrf
                                 <input type="hidden" name="category" value="Бестселлеры">
-                                <input type="hidden" name="sub_category" value="Современная литература">
+                                <input type="hidden" name="sub_category" value="Комиксы и манга">
                                 <button type="submit" class="fs-24 fw-400 mb-25 bg-white border-none cursor-pointer">Комиксы и манга</button>
                             </form>
                         </li>
@@ -120,7 +120,7 @@
                             <form action="{{ route('bookList', 'Комиксы и манга') }}" method="get">
                                 @csrf
                                 <input type="hidden" name="category" value="Художественная литература">
-                                <input type="hidden" name="sub_category" value="Современная литература">
+                                <input type="hidden" name="sub_category" value="Комиксы и манга">
                                 <button type="submit" class="fs-24 fw-400 mb-25 bg-white border-none cursor-pointer">Комиксы и манга</button>
                             </form>
                         </li>
