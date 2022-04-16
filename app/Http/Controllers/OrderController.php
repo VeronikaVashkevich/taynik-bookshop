@@ -110,6 +110,8 @@ class OrderController extends Controller
                 ]);
             }
 
+            $this->clearCart();
+
             return redirect()->action([HomeController::class, 'index']);
         } else {
             return view('not-auth-order-confirm');
