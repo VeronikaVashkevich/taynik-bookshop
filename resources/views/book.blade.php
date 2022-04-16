@@ -27,7 +27,11 @@
                         @endif
                     </div>
                     <div class="w-100p">
-                        <div class="fs-24 fw-500 align-self-end">Товар на складе</div>
+                        @if($book->amount > 0)
+                            <div class="fs-24 fw-500 align-self-end">Товар на складе</div>
+                        @else
+                            <div class="fs-24 fw-500 align-self-end">Товара нет на складе</div>
+                        @endif
                     </div>
                     <a href="{{ route('addToCart', ['id' => $book->id]) }}">
                         <button class="btn btn-cart-big">Положить в корзину</button>
