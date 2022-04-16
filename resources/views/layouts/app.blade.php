@@ -47,7 +47,7 @@
                 </li>
                 @auth
                     <li class="header-el profile flex-center">
-                        <a href="{{ url('/logout') }}">
+                        <a href="{{ url('/home') }}">
                             <img src="{{asset('img/icons/user-icon.png')}}" alt="user icon" class="img-icon">
                         </a>
                         <div class="icon-text">
