@@ -31,6 +31,7 @@ class Book extends Model
         'width',
         'cover',
         'country',
+        'amount',
     ];
 
     public $timestamps = false;

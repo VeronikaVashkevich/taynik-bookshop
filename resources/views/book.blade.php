@@ -33,9 +33,15 @@
                             <div class="fs-24 fw-500 align-self-end">Товара нет на складе</div>
                         @endif
                     </div>
-                    <a href="{{ route('addToCart', ['id' => $book->id]) }}">
-                        <button class="btn btn-cart-big">Положить в корзину</button>
-                    </a>
+                    @if ($book->amount > 0)
+                        <a href="{{ route('addToCart', ['id' => $book->id]) }}">
+                            <button class="btn btn-cart-big">Положить в корзину</button>
+                        </a>
+                    @else
+                        <a>
+                            <button class="btn btn-cart-big btn-disabled" disabled>Положить в корзину</button>
+                        </a>
+                    @endif
                 </div>
             </div>
             <div class="mt-75">
@@ -109,7 +115,12 @@
                             <img src="{{ $book->image }}" alt="">
                         </div>
                         <div class="book-title fs-21 fw-600">
-                            {{ $book->name }}
+                            <form action="{{ route('book', $book->id) }}" method="post">
+                                @csrf
+                                @method('post')
+                                <input type="hidden" name="bookId" value="{{$book->id}}">
+                                <button type="submit" class="fs-21 fw-600 color-black btn bg-white" style="text-align: left;">{{ $book->name }}</button>
+                            </form>
                         </div>
                         <div class="book-author fs-19 fw-500">
                             {{ $book->author }}

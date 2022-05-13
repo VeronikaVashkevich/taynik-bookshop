@@ -32,7 +32,6 @@
                             <td class="fs-20 fw-500 mb-40 ml-30 pl-25">{{ $review->book->name }}</td>
                             <td class="fs-20 fw-500 mb-40 ml-30 pl-25">{{ $review->user->name }}</td>
                             <td class="fs-18 fw-500 mb-40 ml-30 pl-25">{{ $review->text}}</td>
-                            <td class="fs-24 fw-500 mb-40 pl-25"><a href="{{ route('reviews.edit', $review->id) }}" class="color-dark-green">Редактировать</a></td>
                             <td class="fs-24 fw-500 mb-40 pl-25">
                                 <form action="{{ route('reviews.destroy', $review->id) }}" method="post">
                                     @csrf

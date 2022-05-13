@@ -15,7 +15,7 @@
                 </div>
                 <div class="section-content">
                     <form action="{{ route('filterByParams') }}" method="post">
-{{--                        {!! csrf_field() !!}--}}
+                        {{--                        {!! csrf_field() !!}--}}
                         <table class="filters mt-16">
                             <tr class="filter-titles">
                                 <th class="fs-18 fw-500 filter-title"></th>
@@ -27,12 +27,14 @@
                                 <td class="filter-group">
                                     <ul>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="country" id="foreign" value="foreign" class="form-checkbox">
+                                            <input type="checkbox" name="country" id="foreign" value="foreign"
+                                                   class="form-checkbox">
                                             <label for="foreign"></label>
                                             <span class="fake_label">Зарубежная литература</span>
                                         </li>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="country" id="russian" value="russian" class="form-checkbox">
+                                            <input type="checkbox" name="country" id="russian" value="russian"
+                                                   class="form-checkbox">
                                             <label for="russian"></label>
                                             <span class="fake_label">Русская литература</span>
                                         </li>
@@ -41,12 +43,14 @@
                                 <td class="filter-group">
                                     <ul>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="cover" value="hard" class="form-checkbox" id="hardCover">
+                                            <input type="checkbox" name="cover" value="hard" class="form-checkbox"
+                                                   id="hardCover">
                                             <label for="hardCover"></label>
                                             <span class="fake_label">Твердый переплет</span>
                                         </li>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="cover" value="soft" class="form-checkbox" id="softCover">
+                                            <input type="checkbox" name="cover" value="soft" class="form-checkbox"
+                                                   id="softCover">
                                             <label for="softCover"></label>
                                             <span class="fake_label">Мягкий переплет</span>
                                         </li>
@@ -56,7 +60,8 @@
                                     <ul>
                                         @foreach($years as $year)
                                             <li class="filter-parameter fw-500 mt-16">
-                                                <input type="checkbox" name="year" value="{{ $year }}" class="form-checkbox" id="year{{ $year }}">
+                                                <input type="checkbox" name="year" value="{{ $year }}"
+                                                       class="form-checkbox" id="year{{ $year }}">
                                                 <label for="year{{ $year }}"></label>
                                                 <span class="fake_label">{{ $year }}</span>
                                             </li>
@@ -66,17 +71,14 @@
                                 <td class="filter-group">
                                     <ul>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="inStock" value="1" class="form-checkbox" id="inStock">
+                                            <input type="checkbox" name="inStock" value="1" class="form-checkbox"
+                                                   id="inStock">
                                             <label for="inStock"></label>
                                             <span class="fake_label">На складе</span>
                                         </li>
                                         <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="inStock" value="0" class="form-checkbox" id="order">
-                                            <label for="order"></label>
-                                            <span class="fake_label">Под заказ</span>
-                                        </li>
-                                        <li class="filter-parameter fw-500 mt-16">
-                                            <input type="checkbox" name="inStock" value="0" class="form-checkbox" id="outOfStock">
+                                            <input type="checkbox" name="inStock" value="0" class="form-checkbox"
+                                                   id="outOfStock">
                                             <label for="outOfStock"></label>
                                             <span class="fake_label">Нет в продаже</span>
                                         </li>
@@ -118,9 +120,15 @@
                                 @endif
                             </div>
                             <div class="add-to-cart">
-                                <a href="{{ route('addToCart', ['id' => $book->id]) }}">
-                                    <input type="button" value="В корзину" class="btn btn-cart">
-                                </a>
+                                @if ($book->amount > 0)
+                                    <a href="{{ route('addToCart', ['id' => $book->id]) }}">
+                                        <input type="button" value="В корзину" class="btn btn-cart">
+                                    </a>
+                                @else
+                                    <a>
+                                        <input type="button" value="В корзину" class="btn btn-cart" disabled>
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     @endforeach
@@ -130,7 +138,8 @@
                 </div>
             </section>
         @else
-            <div style="height: 40vh; display: flex; align-items: center; justify-content: center; flex-direction: column">
+            <div
+                style="height: 40vh; display: flex; align-items: center; justify-content: center; flex-direction: column">
                 <div>
                     <h1 class="w-100p">Извините, у нас нет таких книг, но есть много других, не менее интересных</h1>
                 </div>
@@ -141,33 +150,33 @@
         @endif
     </div>
 
-        <script>
-            $(document).ready(function () {
-                $('.form-checkbox').each(function() {
-                    $(this).click(function () {
-                        $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            }
-                        });
+    <script>
+        $(document).ready(function () {
+            $('.form-checkbox').each(function () {
+                $(this).click(function () {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
 
-                        $.ajax({
-                            url: '{{ route('bookList') }}',
-                            type: "GET",
-                            data: {
-                                '_token': $('meta[name="csrf-token"]').attr('content'),
-                                data: $('.form-checkbox:checked').serialize(),
-                                'category': '<?php echo $_GET['category'] ?>',
-                                'sub_category': '<?php echo !empty($_GET['sub_category']) ? $_GET['sub_category'] : '' ?>'
-                            },
-                            success: (data)=> {
-                                $('#catalog').html(data);
-                            }
-                        })
+                    $.ajax({
+                        url: '{{ route('bookList') }}',
+                        type: "GET",
+                        data: {
+                            '_token': $('meta[name="csrf-token"]').attr('content'),
+                            data: $('.form-checkbox:checked').serialize(),
+                            'category': '<?php echo $_GET['category'] ?>',
+                            'sub_category': '<?php echo !empty($_GET['sub_category']) ? $_GET['sub_category'] : '' ?>'
+                        },
+                        success: (data) => {
+                            $('#catalog').html(data);
+                        }
                     })
                 })
             })
-        </script>
+        })
+    </script>
 @endsection
 
 @section('footer')

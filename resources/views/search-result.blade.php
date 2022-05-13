@@ -35,9 +35,15 @@
                                 @endif
                             </div>
                             <div class="add-to-cart">
-                                <a href="{{ route('addToCart', ['id' => $book->id]) }}">
-                                    <input type="button" value="В корзину" class="btn btn-cart">
-                                </a>
+                                @if ($book->amount > 0)
+                                    <a href="{{ route('addToCart', ['id' => $book->id]) }}">
+                                        <input type="button" value="В корзину" class="btn btn-cart">
+                                    </a>
+                                @else
+                                    <a>
+                                        <input type="button" value="В корзину" class="btn btn-cart" disabled>
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     @endforeach

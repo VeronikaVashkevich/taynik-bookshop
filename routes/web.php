@@ -41,9 +41,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('/dashboard/store-new-book', [DashboardController::class, 'storeNewBook'])->name('store-new-book');
     Route::get('/dashboard/edit-book/', [DashboardController::class, 'edit'])->name('edit-book-form');
 
-    Route::get('/dashboard/new-category', [CategoryController::class, 'create'])->name('create-category');
-    Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('category-dashboard');
-    Route::resource('categories', CategoryController::class);
+//    Route::get('/dashboard/new-category', [CategoryController::class, 'create'])->name('create-category');
+//    Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('category-dashboard');
+//    Route::resource('categories', CategoryController::class);
 
     Route::get('/dashboard/reviews', [ReviewController::class, 'index'])->name('reviewsDashboard');
 });

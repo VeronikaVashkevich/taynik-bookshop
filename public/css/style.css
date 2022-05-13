@@ -568,6 +568,10 @@ footer {
     color: rgba(15, 110, 92, 1);
 }
 
+.btn-disabled {
+    background: rgba(24, 195, 152, 0.63); !important;
+}
+
 .btn-cart-big {
     width: 352px;
     color: white;
