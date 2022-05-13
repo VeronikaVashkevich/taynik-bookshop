@@ -41,7 +41,7 @@
                                     </a>
                                 @else
                                     <a>
-                                        <input type="button" value="В корзину" class="btn btn-cart" disabled>
+                                        <input type="button" value="Скоро в продаже" class="btn btn-cart" disabled>
                                     </a>
                                 @endif
                             </div>
