@@ -24,7 +24,8 @@
                                     @csrf
                                     @method('post')
                                     <input type="hidden" name="bookId" value="{{$book->id}}">
-                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white" style="text-align: left;">{{ $book->name }}</button>
+                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white"
+                                            style="text-align: left;">{{ $book->name }}</button>
                                 </form>
                             </div>
                             <div class="book-author fs-22 fw-500">
@@ -71,7 +72,8 @@
                                     @csrf
                                     @method('post')
                                     <input type="hidden" name="bookId" value="{{$book->id}}">
-                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white" style="text-align: left;">{{ $book->name }}</button>
+                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white"
+                                            style="text-align: left;">{{ $book->name }}</button>
                                 </form>
                             </div>
                             <div class="book-author fs-22 fw-500">
@@ -117,7 +119,8 @@
                                     @csrf
                                     @method('post')
                                     <input type="hidden" name="bookId" value="{{$book->id}}">
-                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white" style="text-align: left;">{{ $book->name }}</button>
+                                    <button type="submit" class="fs-24 fw-600 color-black btn bg-white"
+                                            style="text-align: left;">{{ $book->name }}</button>
                                 </form>
                             </div>
                             <div class="book-author fs-22 fw-500">
@@ -131,15 +134,9 @@
                                 @endif
                             </div>
                             <div class="add-to-cart">
-                                @if ($book->amount > 0)
-                                    <a href="{{ route('addToCart', ['id' => $book->id]) }}">
-                                        <input type="button" value="В корзину" class="btn btn-cart">
-                                    </a>
-                                @else
-                                    <a>
-                                        <input type="button" value="Скоро в продаже" class="btn btn-cart" disabled>
-                                    </a>
-                                @endif
+                                <a>
+                                    <input type="button" value="Скоро в продаже" class="btn btn-cart" disabled>
+                                </a>
                             </div>
                         </div>
                     @endforeach
