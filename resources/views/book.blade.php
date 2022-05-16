@@ -39,7 +39,7 @@
                         </a>
                     @else
                         <a>
-                            <button class="btn btn-cart-big btn-disabled" disabled>Положить в корзину</button>
+                            <button class="btn btn-cart-big btn-disabled" disabled>Скоро в продаже</button>
                         </a>
                     @endif
                 </div>
